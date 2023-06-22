@@ -8,7 +8,7 @@
 6. Uploaded all the website files using drag & drop to the repo
 7. Followed the steps [here](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) to launch the site on Githup Pages 🚀
 
-<hr><hr><hr>
+<hr>
 
 #### Template readme
 
