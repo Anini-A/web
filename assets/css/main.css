@@ -1796,7 +1796,7 @@ body.is-preload #footer {
 /* Root variables for consistency */
 :root {
 	--font-family: "Source Sans Pro", sans-serif;
-	--main-color: darkgreen;
+	--main-color: red;
 	--border-radius: 0.5rem;
 	--padding: 0.75rem;
 	--thumbnail-height: 6.25rem;
