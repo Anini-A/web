@@ -28,10 +28,7 @@
 		gtag('js', new Date());
 		gtag('config', 'G-C58XWP0H25');
 
-		// Manually track additional pages
-		gtag('config', 'G-C58XWP0H25', { 'page_path': '/web/#intro' });
-		gtag('config', 'G-C58XWP0H25', { 'page_path': '/web/#projects' });
-		gtag('config', 'G-C58XWP0H25', { 'page_path': '/web/#resume' });
+		// Manually track buttons clicks
 
 		function trackMeButtonClick() {
 			gtag('event', 'Button_Click', {
@@ -51,6 +48,14 @@
 			gtag('event', 'Button_Click', {
 				'event_category': 'Button',
 				'event_label': 'Resume',
+			});
+		}
+
+		// Manually track projects clicks
+		function trackReadMoreClick(projectTitle) {
+			gtag('event', 'Read_More_Click', {
+				'event_category': 'Project',
+				'event_label': projectTitle,
 			});
 		}
 	</script>
@@ -155,15 +160,6 @@
 					<!-- Dynamic tag buttons will be added here -->
 				</div>
 
-				<!--<div>
-					<button class="tag-filter-btn active" data-tag="all">All</button>
-					<button class="tag-filter-btn" data-tag="Data_analysis">Data Analysis</button>
-					<button class="tag-filter-btn" data-tag="Network_admin">Network Admin</button>
-					<button class="tag-filter-btn" data-tag="More">More</button>
-					<button class="tag-filter-btn" data-tag="morefilter1">morefilter1</button>
-					<button class="tag-filter-btn" data-tag="morefilter2">morefilter2</button>
-				</div>-->
-
 				<!-- Project grid -->
 				<div class="project-grid">
 
@@ -176,8 +172,10 @@
 							<div class="project-date">05-27-2023</div>
 							<div class="read-more">
 								<a href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Demographic/Demographic%20data%20analyzer.ipynb"
-									class="read-more-link" target="_blank">
-									<span class="fa fa-folder-open"></span> Read more</a>
+									class="read-more-link" target="_blank"
+									onclick="trackReadMoreClick('Demographic Data Analysis')">
+									<span class="fa fa-folder-open"></span> Read more
+								</a>
 							</div>
 						</div>
 					</div>
@@ -191,8 +189,9 @@
 							<div class="project-date">05-27-2023</div>
 							<div class="read-more">
 								<a href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Sea%20Level/Sea%20Level%20Predictor.ipynb"
-									class="read-more-link" target="_blank">
-									<span class="fa fa-folder-open"></span> Read more</a>
+								class="read-more-link" target="_blank"
+								onclick="trackReadMoreClick('Sea Level Predictor')">
+								<span class="fa fa-folder-open"></span> Read more
 							</div>
 						</div>
 					</div>
