@@ -28,6 +28,11 @@
 		gtag('js', new Date());
 		gtag('config', 'G-C58XWP0H25');
 
+		// Manually track additional pages
+		gtag('config', 'G-C58XWP0H25', { 'page_path': '/web/#intro' });
+		gtag('config', 'G-C58XWP0H25', { 'page_path': '/web/#projects' });
+		gtag('config', 'G-C58XWP0H25', { 'page_path': '/web/#resume' });
+
 		function trackMeButtonClick() {
 			gtag('event', 'Button_Click', {
 				'event_category': 'Button',
