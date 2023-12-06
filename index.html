@@ -16,14 +16,7 @@
 	</noscript>
 
 	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-C58XWP0H25"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-C58XWP0H25');
-	</script>
+	<script src="assets/js/analytics.js"></script>
 </head>
 
 <body class="is-preload">
@@ -46,9 +39,9 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="#intro">Me</a></li>
-					<li><a href="#Projects">Projects</a></li>
-					<li><a href="#resume">Resume</a></li>
+					<li><a href="#intro" onclick="trackButtonClick('Me')">Me</a></li>
+					<li><a href="#Projects" onclick="trackButtonClick('Projects')">Projects</a></li>
+					<li><a href="#resume" onclick="trackButtonClick('Resume')">Resume</a></li>
 					<!--<li><a href="#contact">Contact</a></li>-->
 					<!--<li><a href="#elements">Elements</a></li>-->
 				</ul>
