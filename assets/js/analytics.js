@@ -5,24 +5,24 @@ function gtag() { dataLayer.push(arguments); }
 gtag('js', new Date());
 gtag('config', 'G-C58XWP0H25');
 
-function trackButtonClick(Me) {
+function trackMeButtonClick() {
   gtag('event', 'Button_Click', {
     'event_category': 'Button',
-    'event_label': Me,
+    'event_label': 'Me',
   });
 }
 
-function trackButtonClick(Projects) {
+function trackProjectsButtonClick() {
   gtag('event', 'Button_Click', {
     'event_category': 'Button',
-    'event_label': Projects,
+    'event_label': 'Projects',
   });
 }
 
-function trackButtonClick(Resume) {
+function trackResumeButtonClick() {
   gtag('event', 'Button_Click', {
     'event_category': 'Button',
-    'event_label': Resume,
+    'event_label': 'Resume',
   });
 }
 
