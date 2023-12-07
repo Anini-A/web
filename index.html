@@ -58,6 +58,15 @@
 				'event_label': projectTitle,
 			});
 		}
+
+		// Function to track resume downloads
+		function trackResumeDownload() {
+			gtag('event', 'Resume_Download', {
+				'event_category': 'Resume',
+				'event_label': 'Download',
+			});
+		}
+
 	</script>
 
 </head>
@@ -418,7 +427,9 @@
 					</p>
 					<ul class="actions">
 						<li><a href="docs/Resume,%20Anini%20Amoakon.pdf" download="Resume, Anini Amoakon.pdf"
-								class="button primary icon solid fa-download">Download Resume</a></li>
+								onclick="trackResumeDownload()" class="button primary icon solid fa-download">Download
+								Resume </a>
+						</li>
 					</ul>
 				</section>
 				<ul class="icons">
@@ -712,7 +723,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 		<!-- Footer -->
 		<footer id="footer">
-			 <!-- <p class="copyright">&copy; Redesigned using <a href="https://html5up.net" target="_blank">HTML5</a>.</p> -->
+			<!-- <p class="copyright">&copy; Redesigned using <a href="https://html5up.net" target="_blank">HTML5</a>.</p> -->
 		</footer>
 
 	</div>
