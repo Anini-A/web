@@ -1875,8 +1875,7 @@ body.is-preload #footer {
 }
 
 .tag-filter-btn.active {
-	background-color: #444;
-	color: #fff;
+	background-color:rgba(255, 255, 255, 0.175);
 }
 
 /* Adjust project width for responsiveness */
