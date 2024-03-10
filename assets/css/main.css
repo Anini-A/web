@@ -1228,7 +1228,7 @@ button {
 	-webkit-transform: scale(1.0);
 	-ms-transform: scale(1.0);
 	transform: scale(1.0);
-	-webkit-backface-visibility: hidden;
+	/*-webkit-backface-visibility: hidden;*/
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -1875,7 +1875,7 @@ body.is-preload #footer {
 }
 
 .tag-filter-btn.active {
-	background-color:rgba(255, 255, 255, 0.175);
+	background-color: rgba(255, 255, 255, 0.175);
 }
 
 /* Adjust project width for responsiveness */
@@ -1891,4 +1891,54 @@ body.is-preload #footer {
 		width: 280px;
 		/* Set a fixed width for the projects */
 	}
+}
+
+/* Education grid */
+.education-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+	grid-gap: 1.5625rem;
+	margin-top: 1.5625rem;
+	margin-bottom: 1.5625rem;
+}
+
+/* Education styles */
+.education {
+	border-radius: var(--border-radius);
+	padding: var(--padding);
+	background-color: #f2f2f2;
+	position: relative;
+	width: 100%;
+	max-width: 16rem;
+	margin: 0 auto;
+}
+
+.education-details {
+	padding: 0.5rem;
+	position: relative;
+}
+
+.education-title {
+	font-family: var(--font-family);
+	margin: 0;
+	color: black;
+}
+
+.education-institution,
+.education-degree,
+.education-date {
+	font-family: var(--font-family);
+	font-size: 0.75rem;
+	color: black;
+	margin: 0;
+}
+
+.education-logo {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	bottom: 1rem;
+	right: 0.3125rem;
+
 }
