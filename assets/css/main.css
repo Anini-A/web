@@ -1800,7 +1800,7 @@ body.is-preload #footer {
 	--border-radius: 0.5rem;
 	--padding: 0.75rem;
 	--thumbnail-height: 6.25rem;
-	--educationlogo-height: 6.25rem;
+	--educationlogo-height: 5rem;
 }
 
 /* Project styles */
@@ -1894,17 +1894,14 @@ body.is-preload #footer {
 	}
 }
 
-/* Education grid */
 .education-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-	/* Use the same column sizing as project cards */
 	grid-gap: 1.5625rem;
 	margin-top: 1.5625rem;
 	margin-bottom: 1.5625rem;
 }
 
-/* Education card styles */
 .education {
 	border-radius: var(--border-radius);
 	padding: var(--padding);
@@ -1912,9 +1909,8 @@ body.is-preload #footer {
 	position: relative;
 	width: 100%;
 	overflow: hidden;
-	max-width: 18.75rem;
-	margin: 0 auto;
-	/* Center align the cards */
+	max-width: 18.5rem;
+	margin: auto;
 }
 
 .education-details {
@@ -1922,26 +1918,28 @@ body.is-preload #footer {
 	flex-direction: column;
 	position: relative;
 	height: 100%;
-
 }
 
 .education-logo-container {
 	width: 100%;
-	height: var(--thumbnail-height);
-	/* Use the same height as project thumbnails */
+	height: calc(var(--educationlogo-height) + 0.5rem);
+	display: flex;
+	justify-content: center; /* Center horizontally */
+	align-items: center; /* Center vertically */
 	overflow: hidden;
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
-	margin-bottom: 0.5rem;
+
 }
 
 .education-logo {
-	width: 100%;
+	width: var(--educationlogo-height);
 	height: var(--educationlogo-height);
-	/*object-fit: cover;*/
-	border-radius: calc(var(--border-radius) - 0.25rem);
-	/* Adjust border-radius if necessary */
+	border-radius: 100%; /* Make the logo perfectly round */
+	object-fit:cover;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light border shadow */
 }
+
 
 .divider {
 	border: none;
@@ -1949,11 +1947,10 @@ body.is-preload #footer {
 	margin: 0.5rem 0;
 }
 
-/* Education content styles */
 .education-content {
 	padding: auto;
-	/* Increase padding for better spacing */
 	margin-top: auto;
+	margin-left: 0.5rem;
 }
 
 .education-title,
@@ -1964,9 +1961,6 @@ body.is-preload #footer {
 	color: black;
 	margin: 0;
 	padding-bottom: 0.5rem;
-	/* Add padding-bottom for spacing between elements */
-	font-size: 1.125rem;
-	/* Adjust font size as needed */
-	line-height: 1.5;
-	/* Adjust line height for better readability */
+	font-size: 1rem;
+	line-height: 1;
 }
