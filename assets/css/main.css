@@ -1894,65 +1894,81 @@ body.is-preload #footer {
 	}
 }
 
+/* Education grid styles */
 .education-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(18.5rem, 1fr));
 	grid-gap: 1.5625rem;
 	margin-top: 1.5625rem;
 	margin-bottom: 1.5625rem;
 }
 
+/* Education card styles */
 .education {
 	border-radius: var(--border-radius);
 	padding: var(--padding);
+	margin: auto;
 	background-color: #f2f2f2;
 	position: relative;
-	width: 100%;
 	overflow: hidden;
+	perspective: 1000px;
+	/* Set perspective for 3D effect */
+	width: 100%;
 	max-width: 18.5rem;
-	margin: auto;
+	height: 14.75rem;
+	/* Adjust height as needed */
 }
 
-.education-details {
-	display: flex;
-	flex-direction: column;
+/* Flip card inner container */
+.flip-card-inner {
 	position: relative;
-	height: 100%;
+	transition: transform 10s;
+	transform-style: preserve-3d;
+
 }
 
-.education-logo-container {
+/* Flip animation on hover */
+.education:hover .flip-card-inner {
+	transform: rotateY(180deg);
+}
+
+/* Front and back sides of the card */
+.flip-card-front,
+.flip-card-back {
+	position: absolute;
 	width: 100%;
-	height: calc(var(--educationlogo-height) + 0.5rem);
-	display: flex;
-	justify-content: center; /* Center horizontally */
-	align-items: center; /* Center vertically */
-	overflow: hidden;
-	border-top-left-radius: var(--border-radius);
-	border-top-right-radius: var(--border-radius);
-
+	height: 100%;
+	backface-visibility: hidden;
 }
 
-.education-logo {
-	width: var(--educationlogo-height);
-	height: var(--educationlogo-height);
-	border-radius: 100%; /* Make the logo perfectly round */
-	object-fit:cover;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light border shadow */
+/* Front side styles */
+.flip-card-front {
+	background-color: #f2f2f2;
+	color: black;
+	z-index: 1;
 }
 
+/* Back side styles */
+.flip-card-back {
+	background-color: #f2f2f2;
+	color: black;
+	transform: rotateY(180deg);
+}
 
+/* Divider styles */
 .divider {
 	border: none;
 	border-top: 1px solid #ccc;
 	margin: 0.5rem 0;
 }
 
+/* Education content styles */
 .education-content {
-	padding: auto;
-	margin-top: auto;
+	margin-top: 0.5rem;
 	margin-left: 0.5rem;
 }
 
+/* Education title and details styles */
 .education-title,
 .education-institution,
 .education-degree,
@@ -1963,4 +1979,32 @@ body.is-preload #footer {
 	padding-bottom: 0.5rem;
 	font-size: 1rem;
 	line-height: 1.15rem;
+}
+
+/* Logo container styles */
+.education-logo-container {
+	width: 100%;
+	height: calc(var(--educationlogo-height) + 0.5rem);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+}
+
+/* Logo styles */
+.education-logo {
+	width: var(--educationlogo-height);
+	height: var(--educationlogo-height);
+	border-radius: 100%;
+	object-fit: cover;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Subjects list styles */
+.subjects-list {
+	margin: 0.5rem;
+	line-height: 2rem;
+	font-size: 1rem;
 }
