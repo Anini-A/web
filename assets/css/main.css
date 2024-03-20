@@ -1922,7 +1922,7 @@ body.is-preload #footer {
 /* Flip card inner container */
 .flip-card-inner {
 	position: relative;
-	transition: transform 1.1s;
+	transition: transform 1s;
 	transform-style: preserve-3d;
 }
 
