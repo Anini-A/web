@@ -30,7 +30,7 @@
 
 		// Manually track buttons clicks
 
-		function trackMeButtonClick() {
+		function trackIntroButtonClick() {
 			gtag('event', 'Button_Click', {
 				'event_category': 'Button',
 				'event_label': 'Intro',
@@ -44,7 +44,7 @@
 			});
 		}
 
-		function trackResumeButtonClick() {
+		function trackConnectButtonClick() {
 			gtag('event', 'Button_Click', {
 				'event_category': 'Button',
 				'event_label': 'Connect',
@@ -91,9 +91,9 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="#intro" onclick="trackMeButtonClick()">Intro</a></li>
+					<li><a href="#intro" onclick="trackIntroButtonClick()">Intro</a></li>
 					<li><a href="#projects" onclick="trackProjectsButtonClick()">Projects</a></li>
-					<li><a href="#connect" onclick="trackResumeButtonClick()">Connect</a></li>
+					<li><a href="#connect" onclick="trackConnectButtonClick()">Connect</a></li>
 					<!--<li><a href="#contact">Contact</a></li>-->
 					<!--<li><a href="#elements">Elements</a></li>-->
 				</ul>
