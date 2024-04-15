@@ -1,12 +1,12 @@
 # How I built my website and hosted for free? 🚀
 
-1. Watched AlexTheAnalyst YT video: [How to create a portfolio website for free](https://youtu.be/ocdwh0KYeUs)
-2. Download this website [template](https://html5up.net/dimension) on [HTML5 UP](html5up.net)
-3. Download [Brackets](https://brackets.io/) (It is simple and allows live HTML, CSS and JavaScript editing)
-4. Redesigned extensively the 'Me' and 'Projects' tab
+1. Followed AlexTheAnalyst YT video: [How to create a portfolio website for free](https://youtu.be/ocdwh0KYeUs)
+2. Download this [web template](https://html5up.net/dimension) on [HTML5 UP](html5up.net)
+3. Download [VS Code](https://code.visualstudio.com/download) (It is simple and allows live HTML, CSS and JavaScript editing)
+4. Redesigned extensively the 'Intro', 'Projects' and 'Connect' pages
 5. Created a github repository
-6. Uploaded all the website files using drag & drop to the repo
-7. Followed the steps [here](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) to launch the site on Githup Pages 🚀
+6. Uploaded all the website files to the github repository
+7. Followed the steps [here](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) to publish the site on Githup Pages 🚀
 
 <hr>
 
