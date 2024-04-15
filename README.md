@@ -1,4 +1,4 @@
-# How I built my website and hosted for free? 🚀
+# How I built my portfolio website and hosted for free? 🚀
 
 1. Followed AlexTheAnalyst YT video: [How to create a portfolio website for free](https://youtu.be/ocdwh0KYeUs)
 2. Download this [web template](https://html5up.net/dimension) on [HTML5 UP](html5up.net)
