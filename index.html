@@ -1,671 +1,1266 @@
-<!DOCTYPE HTML>
-<!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>IT Analyst (software & hardware), Data Analyst</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-	</noscript>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anini — Operations & Data Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-C58XWP0H25"></script>
+  :root {
+    --dune: #32302F;
+    --dune-mid: #4a4846;
+    --dune-light: #6b6865;
+    --cream: #FAF9F7;
+    --warm: #F3F0EB;
+    --border: #E2DDD8;
+    --border-dark: #C8C2BB;
+    --accent: #B8976A;
+    --accent-light: #E8D9C4;
+    --text-body: #4a4846;
+    --text-muted: #8C8480;
+    --serif: 'EB Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
 
-	<script>
-		window.dataLayer = window.dataLayer || [];
+  html { scroll-behavior: smooth; }
 
-		function gtag() {
-			dataLayer.push(arguments);
-		}
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--dune);
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+  }
 
-		gtag('js', new Date());
-		gtag('config', 'G-C58XWP0H25');
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+    background: var(--dune);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 28px;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 100;
+  }
 
-		// Manually track buttons clicks
+  .logo {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--cream);
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
 
-		function trackIntroButtonClick() {
-			gtag('event', 'Button_Click', {
-				'event_category': 'Button',
-				'event_label': 'Intro',
-			});
-		}
+  .logo-tagline {
+    font-size: 9px;
+    color: var(--accent);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
 
-		function trackProjectsButtonClick() {
-			gtag('event', 'Button_Click', {
-				'event_category': 'Button',
-				'event_label': 'Projects',
-			});
-		}
+  .nav-label {
+    font-size: 9px;
+    color: #5a5451;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
 
-		function trackConnectButtonClick() {
-			gtag('event', 'Button_Click', {
-				'event_category': 'Button',
-				'event_label': 'Connect',
-			});
-		}
+  nav { display: flex; flex-direction: column; gap: 2px; }
 
-		// Manually track projects clicks
-		function trackReadMoreClick(projectTitle) {
-			gtag('event', 'Read_More_Click', {
-				'event_category': 'Project',
-				'event_label': projectTitle,
-			});
-		}
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 8px;
+    font-size: 13px;
+    color: #9a9390;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+    position: relative;
+    user-select: none;
+  }
 
-		// Function to track resume downloads
-		/*function trackResumeDownload() {
-			gtag('event', 'Resume_Download', {
-				'event_category': 'Resume',
-				'event_label': 'Download',
-			});
-		}*/
+  .nav-item:hover { color: #ccc7c2; background: rgba(255,255,255,0.04); }
+  .nav-item.active { color: var(--cream); }
+  .nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%; transform: translateY(-50%);
+    width: 3px; height: 16px;
+    background: var(--accent);
+    border-radius: 0 2px 2px 0;
+  }
 
-	</script>
+  .nav-item svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.5; flex-shrink: 0; }
 
+  .sidebar-footer {
+    margin-top: auto;
+    font-size: 10px;
+    color: #4a4846;
+    line-height: 1.6;
+  }
+
+  .sidebar-footer a { color: #6b6865; text-decoration: none; }
+  .sidebar-footer a:hover { color: var(--accent); }
+
+  /* ── MAIN ── */
+  .main {
+    margin-left: 220px;
+    flex: 1;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  .panel {
+    display: none;
+    min-height: 100vh;
+    padding: 64px 60px;
+    animation: fadeIn 0.35s ease;
+  }
+
+  .panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    height: 1px;
+    width: 40px;
+    background: var(--accent-light);
+    display: inline-block;
+  }
+
+  /* ── ABOUT ── */
+  .about-headline {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--dune);
+    margin-bottom: 28px;
+    max-width: 560px;
+  }
+
+  .about-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .about-body {
+    font-size: 15px;
+    color: var(--text-body);
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+
+  .pill {
+    font-size: 11px;
+    padding: 5px 12px;
+    border: 0.5px solid var(--border-dark);
+    color: var(--text-body);
+    letter-spacing: 0.3px;
+    border-radius: 2px;
+    background: transparent;
+  }
+
+  .about-stats {
+    display: flex;
+    gap: 40px;
+    padding-top: 36px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: var(--dune);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline { display: flex; flex-direction: column; }
+
+  .tl-entry {
+    display: grid;
+    grid-template-columns: 140px 1px 1fr;
+    gap: 0 28px;
+    margin-bottom: 48px;
+  }
+
+  .tl-left { text-align: right; padding-top: 2px; }
+
+  .tl-company {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--dune);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .tl-date {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .tl-line {
+    width: 1px;
+    background: var(--border);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .tl-line::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 50%;
+    transform: translateX(-50%);
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--dune);
+    border: 2px solid var(--cream);
+    outline: 1px solid var(--dune);
+  }
+
+  .tl-entry.past .tl-line::before {
+    background: var(--cream);
+    outline-color: var(--border-dark);
+  }
+
+  .tl-right { padding-bottom: 48px; border-bottom: 0.5px solid var(--border); }
+  .tl-entry:last-child .tl-right { border-bottom: none; }
+
+  .tl-role {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dune);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .tl-outcome {
+    font-size: 12px;
+    color: var(--accent);
+    font-style: italic;
+    font-family: var(--serif);
+    margin-bottom: 14px;
+  }
+
+  .tl-bullets {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+
+  .tl-bullets li {
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.65;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 5px;
+    font-weight: 300;
+  }
+
+  .tl-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--border-dark);
+    font-size: 11px;
+  }
+
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  .tl-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--warm);
+    color: var(--text-muted);
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── PROJECTS ── */
+  .filter-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-size: 11px;
+    padding: 6px 14px;
+    border: 0.5px solid var(--border-dark);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: var(--sans);
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover { color: var(--dune); border-color: var(--dune); }
+  .filter-btn.active { background: var(--dune); color: var(--cream); border-color: var(--dune); }
+
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .card-flip {
+    perspective: 900px;
+    height: 180px;
+    cursor: pointer;
+  }
+
+  .card-flip[style*="display: none"] { display: none !important; }
+
+  .card-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+    transform-style: preserve-3d;
+  }
+
+  .card-flip.flipped .card-inner { transform: rotateY(180deg); }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-front { background: var(--cream); }
+  .card-back { background: var(--dune); transform: rotateY(180deg); }
+
+  .card-type {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--dune);
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+  }
+
+  .card-date { font-size: 10px; color: var(--text-muted); }
+
+  .card-hint {
+    font-size: 10px;
+    color: var(--border-dark);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .card-hint svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+  .card-desc {
+    font-size: 12px;
+    color: #9a9390;
+    line-height: 1.6;
+    flex: 1;
+    font-weight: 300;
+  }
+
+  .card-back-footer { margin-top: auto; }
+
+  .card-back-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+
+  .card-back-tag {
+    font-size: 9px;
+    padding: 2px 7px;
+    background: rgba(255,255,255,0.08);
+    color: #9a9390;
+    border-radius: 2px;
+    letter-spacing: 0.3px;
+  }
+
+  .card-link {
+    font-size: 10px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: opacity 0.15s;
+  }
+
+  .card-link:hover { opacity: 0.75; }
+  .card-link svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 60px;
+    max-width: 680px;
+  }
+
+  .skill-group-label {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .skill-item {
+    font-size: 13px;
+    color: var(--text-body);
+    padding: 7px 0;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 300;
+  }
+
+  .skill-item:last-child { border-bottom: none; }
+
+  .skill-note {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-grid { display: flex; flex-direction: column; gap: 12px; max-width: 600px; }
+
+  .edu-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 20px;
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    background: var(--cream);
+    transition: border-color 0.2s;
+  }
+
+  .edu-card:hover { border-color: var(--border-dark); }
+
+  .edu-icon {
+    width: 36px; height: 36px;
+    border-radius: 4px;
+    background: var(--warm);
+    border: 0.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .edu-icon svg { width: 16px; height: 16px; stroke: var(--dune-light); fill: none; stroke-width: 1.5; }
+
+  .edu-body { flex: 1; }
+
+  .edu-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dune);
+    margin-bottom: 2px;
+  }
+
+  .edu-by {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .edu-type {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+
+  .edu-year {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--serif);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── CONNECT ── */
+  .connect-wrap { max-width: 480px; }
+
+  .connect-headline {
+    font-family: var(--serif);
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+
+  .connect-body {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    font-weight: 300;
+    max-width: 380px;
+  }
+
+  .connect-links { display: flex; flex-direction: column; gap: 10px; }
+
+  .connect-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    color: var(--dune);
+    text-decoration: none;
+    font-size: 13px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .connect-link:hover { border-color: var(--dune); background: var(--warm); }
+
+  .connect-link svg {
+    width: 18px; height: 18px;
+    stroke: var(--text-muted); fill: none; stroke-width: 1.5;
+    flex-shrink: 0;
+  }
+
+  .connect-link-label { flex: 1; }
+  .connect-link-name { font-weight: 500; margin-bottom: 1px; }
+  .connect-link-sub { font-size: 11px; color: var(--text-muted); }
+
+  .connect-link-arrow { color: var(--text-muted); font-size: 16px; }
+
+  /* ── MOBILE ── */
+  .mobile-header {
+    display: none;
+    background: var(--dune);
+    padding: 16px 20px;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-logo { font-family: var(--serif); font-size: 20px; color: var(--cream); }
+
+  .hamburger {
+    background: none; border: none; cursor: pointer;
+    display: flex; flex-direction: column; gap: 4px; padding: 4px;
+  }
+
+  .hamburger span {
+    display: block; width: 20px; height: 1px;
+    background: var(--cream); transition: all 0.2s;
+  }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 52px; left: 0; right: 0; bottom: 0;
+    background: var(--dune);
+    z-index: 150;
+    padding: 32px 28px;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mobile-nav.open { display: flex; }
+
+  @media (max-width: 768px) {
+    body { flex-direction: column; overflow: auto; }
+    .sidebar { display: none; }
+    .mobile-header { display: flex; }
+    .main { margin-left: 0; height: auto; overflow: visible; padding-top: 52px; }
+    .panel { padding: 40px 24px; min-height: auto; }
+    .about-headline { font-size: 36px; }
+    .tl-entry { grid-template-columns: 1fr; }
+    .tl-left { text-align: left; margin-bottom: 8px; }
+    .tl-line { display: none; }
+    .skills-grid { grid-template-columns: 1fr; gap: 28px; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .about-stats { gap: 24px; flex-wrap: wrap; }
+  }
+</style>
 </head>
+<body>
 
-<body class="is-preload">
+<!-- Mobile header -->
+<header class="mobile-header">
+  <span class="mobile-logo">Anini</span>
+  <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
-	<!-- Wrapper -->
-	<div id="wrapper">
+<div class="mobile-nav" id="mobileNav">
+  <div class="nav-item active" onclick="showPanel('about'); closeMobileNav()">About</div>
+  <div class="nav-item" onclick="showPanel('experience'); closeMobileNav()">Experience</div>
+  <div class="nav-item" onclick="showPanel('projects'); closeMobileNav()">Projects</div>
+  <div class="nav-item" onclick="showPanel('skills'); closeMobileNav()">Skills</div>
+  <div class="nav-item" onclick="showPanel('education'); closeMobileNav()">Education</div>
+  <div class="nav-item" onclick="showPanel('connect'); closeMobileNav()">Connect</div>
+</div>
 
-		<!-- Header -->
-		<header id="header">
-			<div class="logo">
-				<span class="icon fa-gem"></span>
-			</div>
-			<div class="content">
-				<div class="inner">
-					<h1>Anini</h1>
-					<h2>Senior IT analyst & Data analyst</h2>
-					<p>I'm passionate about Data Analysis 📊, IT Systems & Services ⚙️, and user experience ✨
-					</p>
-				</div>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="#intro" onclick="trackIntroButtonClick()">Intro</a></li>
-					<li><a href="#projects" onclick="trackProjectsButtonClick()">Projects</a></li>
-					<li><a href="#connect" onclick="trackConnectButtonClick()">Connect</a></li>
-					<!--<li><a href="#contact">Contact</a></li>-->
-					<!--<li><a href="#elements">Elements</a></li>-->
-				</ul>
-			</nav>
-		</header>
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="logo">Anini</div>
+  <div class="logo-tagline">Portfolio</div>
 
-		<!-- Main -->
-		<div id="main">
+  <div class="nav-label">Navigate</div>
+  <nav>
+    <div class="nav-item active" onclick="showPanel('about')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      About
+    </div>
+    <div class="nav-item" onclick="showPanel('experience')">
+      <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+      Experience
+    </div>
+    <div class="nav-item" onclick="showPanel('projects')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Projects
+    </div>
+    <div class="nav-item" onclick="showPanel('skills')">
+      <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Skills
+    </div>
+    <div class="nav-item" onclick="showPanel('education')">
+      <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      Education
+    </div>
+    <div class="nav-item" onclick="showPanel('connect')">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Connect
+    </div>
+  </nav>
 
-			<!-- Intro -->
-			<article id="intro">
-				<h2 class="major">👨🏾‍💻 Intro</h2>
+  <div class="sidebar-footer">
+    <a href="https://github.com/Anini-A" target="_blank" rel="noopener noreferrer">GitHub</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/anini-amoakon/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <br><br>
+    Bilingual EN · FR 🇨🇦
+  </div>
+</aside>
 
-				<ul class="icons">
-					<li><a href="https://www.linkedin.com/in/anini-amoakon/" target="_blank"
-							class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					<li><a href="https://github.com/Anini-A" target="_blank" class="icon brands fa-github"><span
-								class="label">GitHub</span></a></li>
-					<li>Bilingual 🇬🇧🇫🇷 </li>
-				</ul>
+<!-- Main content -->
+<main class="main">
 
-				<h4>Professional Experience</h4>
-				<p>
-					With 4+ years as a Senior IT Analyst, I excel in optimizing processes and deploying innovative tech
-					solutions. My transition into Data Analytics builds on this foundation, enhancing my skills through
-					hands-on projects that combine IT expertise with data-driven insights. Explore my journey in the <a
-						href="https://anini-a.github.io/web/#projects" target="_parent"><span>project
-							portfolio</span></a>. I am committed to delivering adaptable, data-focused solutions.
-				</p>
+  <!-- ABOUT -->
+  <section class="panel active" id="about">
+    <div class="section-eyebrow">About</div>
+    <h1 class="about-headline">
+      Operations &<br><em>data specialist</em>
+    </h1>
+    <p class="about-body">
+      5+ years building data tools, automating compliance workflows, and solving complex operational problems at scale — across fintech and enterprise IT. I bridge the gap between front-line operations and technical systems, turning process friction into measurable outcomes.
+    </p>
+    <div class="pill-row">
+      <span class="pill">SQL</span>
+      <span class="pill">Workato</span>
+      <span class="pill">ITIL v4</span>
+      <span class="pill">Process automation</span>
+      <span class="pill">Fintech ops</span>
+      <span class="pill">Bilingual EN · FR</span>
+      <span class="pill">Looker Studio</span>
+    </div>
+    <div class="about-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years in IT & ops</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Industries</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Projects shipped</div>
+      </div>
+      <div>
+        <div class="stat-num">EN·FR</div>
+        <div class="stat-label">Bilingual</div>
+      </div>
+    </div>
+  </section>
 
-				<h4>Area of expertise</h4>
-				<ul>
-					<li>Data Analysis</li>
-					<li>IT Service and Operations management</li>
-					<li>Communication and Stakeholder Management</li>
-					<li>End User Technologies and Technical Troubleshooting</li>
-				</ul>
+  <!-- EXPERIENCE -->
+  <section class="panel" id="experience">
+    <div class="section-eyebrow">Experience</div>
+    <div class="timeline">
 
-				<h4>Education and certifications</h4>
+      <div class="tl-entry">
+        <div class="tl-left">
+          <div class="tl-company">Wealthsimple</div>
+          <div class="tl-date">Mar 2021<br>Present</div>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-right">
+          <div class="tl-role">Operations Specialist</div>
+          <div class="tl-outcome">Building data tools & automating compliance ops at scale</div>
+          <ul class="tl-bullets">
+            <li>Automated identity conflict ticket assignment — eliminating ~2.6 hrs/day of manual work across the team</li>
+            <li>Built SQL-driven dashboards for compliance monitoring, regulatory account remediation (MEP, RTP), and client segmentation</li>
+            <li>Designed and deployed Workato-based automation recipes to streamline operational workflows</li>
+            <li>Proposed and quantified process improvements with projected savings of 37.5+ hours annually</li>
+            <li>Led cross-functional coordination between Operations, Legal, Engineering, and Compliance teams</li>
+            <li>Trained and onboarded new team members; created process documentation in Notion</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">SQL</span>
+            <span class="tl-tag">Workato</span>
+            <span class="tl-tag">Looker Studio</span>
+            <span class="tl-tag">Apache Preset</span>
+            <span class="tl-tag">JIRA</span>
+            <span class="tl-tag">Zendesk</span>
+            <span class="tl-tag">Google Scripts</span>
+            <span class="tl-tag">Okta</span>
+            <span class="tl-tag">Notion</span>
+          </div>
+        </div>
+      </div>
 
-				<!--education-grid-->
+      <div class="tl-entry past">
+        <div class="tl-left">
+          <div class="tl-company">IG Wealth</div>
+          <div class="tl-date">Dec 2018<br>Mar 2021</div>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-right">
+          <div class="tl-role">Senior IT Analyst</div>
+          <div class="tl-outcome">Enterprise IT support & deployment at national scale</div>
+          <ul class="tl-bullets">
+            <li>Supported 3,000+ users across Canada — imaging, deploying, and maintaining Windows environments</li>
+            <li>Led rollouts of Salesforce CRM, DocuSign, Citrix, and Microsoft Intune</li>
+            <li>Managed knowledge base and delivered technical training for Helpdesk analysts</li>
+            <li>Administered Active Directory, VPN, and endpoint security policies</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Intune</span>
+            <span class="tl-tag">ServiceNow</span>
+            <span class="tl-tag">Citrix</span>
+            <span class="tl-tag">Active Directory</span>
+            <span class="tl-tag">Salesforce</span>
+            <span class="tl-tag">DocuSign</span>
+            <span class="tl-tag">Azure AD</span>
+          </div>
+        </div>
+      </div>
 
-				<div class="education-grid">
+      <div class="tl-entry past">
+        <div class="tl-left">
+          <div class="tl-company">Canadian Tire</div>
+          <div class="tl-date">May 2017<br>Jan 2018</div>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-right">
+          <div class="tl-role">IT Consultant</div>
+          <div class="tl-outcome">Network infrastructure & self-serve kiosk deployment</div>
+          <ul class="tl-bullets">
+            <li>Deployed and configured networked self-serve kiosks across retail locations</li>
+            <li>Analyzed network infrastructure and provided remote troubleshooting support</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Network monitoring</span>
+            <span class="tl-tag">Hardware deployment</span>
+            <span class="tl-tag">Remote support</span>
+          </div>
+        </div>
+      </div>
 
-					<div class="education">
-						<div class="flip-card-inner">
-							<!-- Front side of the card -->
-							<div class="flip-card-front education-details">
-								<div class="education-logo-container">
-									<img src="images/USB logo.jpeg" alt="Université de Saint-Boniface Logo"
-										class="education-logo">
-								</div>
-								<hr class="divider">
-								<div class="education-content">
-									<h5 class="education-title">Computer Science</h5>
-									<p class="education-institution">Université de Saint-Boniface 🇨🇦</p>
-									<p class="education-date">2018</p>
-									<p class="education-degree">Diploma</p>
-								</div>
-							</div>
-							<!-- Back side of the card -->
-							<div class="flip-card-back">
-								<div class="education-content">
-									<ul class="subjects-list">
-										<li>Network Administration</li>
-										<li>IT Project Management</li>
-										<li>Database Management</li>
-										<li>Servers Administration</li>
-										<li>Cloud Apps & Visualization</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+      <div class="tl-entry past">
+        <div class="tl-left">
+          <div class="tl-company">MTN CI</div>
+          <div class="tl-date">Dec 2015<br>May 2016</div>
+        </div>
+        <div class="tl-line"></div>
+        <div class="tl-right">
+          <div class="tl-role">Network Administrator (Intern)</div>
+          <div class="tl-outcome">Cisco access point deployment & network service management</div>
+          <ul class="tl-bullets">
+            <li>Assessed client network requirements and coordinated Cisco access point deployment</li>
+            <li>Conducted testing and provided support throughout rollout</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Cisco</span>
+            <span class="tl-tag">Network infrastructure</span>
+          </div>
+        </div>
+      </div>
 
-					<div class="education">
-						<div class="flip-card-inner">
-							<!-- Front side of the card -->
-							<div class="flip-card-front education-details">
-								<div class="education-logo-container">
-									<img src="images/EST logo.jpeg" alt="Ecole Supérieur de Technologie Logo"
-										class="education-logo">
-								</div>
-								<hr class="divider">
-								<div class="education-content">
-									<h5 class="education-title">Network & Telecom</h5>
-									<p class="education-institution">Ecole Supérieur de Technologie 🇨🇮</p>
-									<p class="education-date">2016</p>
-									<p class="education-degree">Advanced Technical Diploma</p>
-								</div>
-							</div>
-							<!-- Back side of the card -->
-							<div class="flip-card-back">
-								<div class="education-content">
-									<ul class="subjects-list">
-										<li>Wireless Communication Systems</li>
-										<li>Transmission systems</li>
-										<li>Switching (Signaling System 7)</li>
-										<li>Telephony Networks (Lines, PSTN, PBX, VOIP)</li>
-										<li>Signal Processing and energy</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+    </div>
+  </section>
 
-					<div class="education">
-						<div class="flip-card-inner">
-							<!-- Front side of the card -->
-							<div class="flip-card-front education-details">
-								<div class="education-logo-container">
-									<img src="images/FCC logo.png" alt="FreeCodeCamp Logo" class="education-logo">
-								</div>
-								<hr class="divider">
-								<div class="education-content">
-									<h5 class="education-title">Data Analysis w/ Python</h5>
-									<p class="education-institution">FreeCodeCamp</p>
-									<p class="education-date">2023</p>
-									<p class="education-degree">Professional Certificate</p>
-								</div>
-							</div>
-							<!-- Back side of the card -->
-							<div class="flip-card-back">
-								<div class="education-content">
-									<ul class="subjects-list">
-										<li>Jupyter NB for Data Analysis</li>
-										<li>Numpy for Data Operations</li>
-										<li>Working with Pandas DataFrames</li>
-										<li>Data Cleaning Techniques</li>
-										<li>Data Access Techniques</li>
-										<li>Python Libraries For Analysis</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+  <!-- PROJECTS -->
+  <section class="panel" id="projects">
+    <div class="section-eyebrow">Projects</div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProj('all',this)">All</button>
+      <button class="filter-btn" onclick="filterProj('ops',this)">Ops & automation</button>
+      <button class="filter-btn" onclick="filterProj('data',this)">Data & analytics</button>
+      <button class="filter-btn" onclick="filterProj('it',this)">IT & infrastructure</button>
+    </div>
+    <div class="proj-grid" id="projGrid">
 
+      <div class="card-flip" data-cat="ops" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">Ops · Automation</div>
+            <div class="card-title">JIRA ticket assignment automation</div>
+            <div class="card-meta">
+              <span class="card-date">Jan 2025</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">Eliminated ~2.6 hrs/day of manual work. Analyzed 4,782 tickets over 61 days and designed a round-robin distribution system using JIRA automation rules.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">JIRA</span><span class="card-back-tag">Google Sheets</span><span class="card-back-tag">Scripts</span><span class="card-back-tag">Looker</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-					<div class="education">
-						<div class="flip-card-inner">
-							<!-- Front side of the card -->
-							<div class="flip-card-front education-details">
-								<div class="education-logo-container">
-									<img src="images/CodeCademy logo.webp" alt="Codecademy Logo" class="education-logo">
-								</div>
-								<hr class="divider">
-								<div class="education-content">
-									<h5 class="education-title">SQL and PYTHON 3</h5>
-									<p class="education-institution">Codecademy</p>
-									<p class="education-date">2021</p>
-									<p class="education-degree">Professional Certificate</p>
-								</div>
-							</div>
-							<!-- Back side of the card -->
-							<div class="flip-card-back">
-								<div class="education-content">
-									<ul class="subjects-list">
-										<li>SQL Data Manipulation & Queries</li>
-										<li>Aggregate SQL Functions</li>
-										<li>Python Intro</li>
-										<li>Python Control Flow and Logic</li>
-										<li>Python Data Structures</li>
-										<li>Python Advanced Functions</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+      <div class="card-flip" data-cat="ops" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">Ops · Compliance</div>
+            <div class="card-title">MEP & RTP compliance remediation workflow</div>
+            <div class="card-meta">
+              <span class="card-date">Aug 2025</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">Built a monthly SQL-driven process to identify and remediate regulatory compliance accounts. Established SLAs, verification steps, and repeatable documentation.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">SQL</span><span class="card-back-tag">Compliance</span><span class="card-back-tag">Process design</span><span class="card-back-tag">Notion</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-					<div class="education">
-						<div class="education-details">
-							<div class="education-logo-container">
-								<img src="images/Wealthsimple logo.png" alt="Wealthsimple Logo" class="education-logo">
-							</div>
-							<hr class="divider">
-							<div class="education-content">
-								<h5 class="education-title">SQL</h5>
-								<p class="education-institution">Wealthsimple</p>
-								<p class="education-date">2022</p>
-								<p class="education-degree">Professional Development</p>
-							</div>
-						</div>
-					</div>
+      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">Data · Dashboard</div>
+            <div class="card-title">DragonPass HNW rewards dashboard</div>
+            <div class="card-meta">
+              <span class="card-date">Nov 2023</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">SQL + Apache Preset dashboard enabling airport lounge code distribution to clients with $500K+ in deposits. Built with data engineers, validated before full rollout.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">SQL</span><span class="card-back-tag">Apache Preset</span><span class="card-back-tag">Data viz</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-					<div class="education">
-						<div class="flip-card-inner">
-							<!-- Front side of the card -->
-							<div class="flip-card-front education-details">
-								<div class="education-logo-container">
-									<img src="images/itilv4.png" alt="AXELOS ITIL V4 Logo" class="education-logo">
-								</div>
-								<hr class="divider">
-								<div class="education-content">
-									<h5 class="education-title">ITIL V4</h5>
-									<p class="education-institution">AXELOS</p>
-									<p class="education-date">2020</p>
-									<p class="education-degree">Professional Certificate</p>
-								</div>
-							</div>
-							<!-- Back side of the card -->
-							<div class="flip-card-back">
-								<div class="education-content">
-									<ul class="subjects-list">
-										<li>Service Management Concepts</li>
-										<li>Core ITIL Principles</li>
-										<li>The 4 Dimensions of Service Management</li>
-										<li>Key Terminologies Across 15 ITIL Practices</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+      <div class="card-flip" data-cat="ops" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">Ops · Analysis</div>
+            <div class="card-title">KYC concurrent update data investigation</div>
+            <div class="card-meta">
+              <span class="card-date">Sep 2025</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">Investigated frequency of simultaneous Name + SIN KYC updates over 6 months. Wrote targeted SQL, built a Looker chart, and delivered findings to stakeholders for engineering review.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">SQL</span><span class="card-back-tag">Looker</span><span class="card-back-tag">Data analysis</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-					<div class="education">
-						<div class="flip-card-inner">
-							<!-- Front side of the card -->
-							<div class="flip-card-front education-details">
-								<div class="education-logo-container">
-									<img src="images/thecommons.jpeg" alt="Google Logo" class="education-logo">
-								</div>
-								<hr class="divider">
-								<div class="education-content">
-									<h5 class="education-title">Product Management</h5>
-									<p class="education-institution">TheCommons</p>
-									<p class="education-date">2023</p>
-									<p class="education-degree">Professional Certificate</p>
-								</div>
-							</div>
-							<!-- Back side of the card -->
-							<div class="flip-card-back">
-								<div class="education-content">
-									<ul class="subjects-list">
-										<li>Product Vision</li>
-										<li>User Journey Mapping</li>
-										<li>Roadmap Planning</li>
-										<li>Prioritization Frameworks</li>
-										<li>Product Feature Launch</li>
-										<li>Experimentation & Roll-out</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">Data · Python</div>
+            <div class="card-title">Sea level predictor</div>
+            <div class="card-meta">
+              <span class="card-date">May 2023</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">Analyzed global average sea level change since 1880 and built a linear regression model forecasting change through 2050.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">Python</span><span class="card-back-tag">Pandas</span><span class="card-back-tag">Matplotlib</span></div>
+              <a class="card-link" href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Sea%20Level/Sea%20Level%20Predictor.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-					<div class="education">
-						<div class="flip-card-inner">
-							<!-- Front side of the card -->
-							<div class="flip-card-front education-details">
-								<div class="education-logo-container">
-									<img src="images/Google logo.png" alt="Google Logo" class="education-logo">
-								</div>
-								<hr class="divider">
-								<div class="education-content">
-									<h5 class="education-title">Data Analytics</h5>
-									<p class="education-institution">Google | Coursera</p>
-									<p class="education-date">2024</p>
-									<p class="education-degree">Professional Certificate</p>
-								</div>
-							</div>
-							<!-- Back side of the card -->
-							<div class="flip-card-back">
-								<div class="education-content">
-									<ul class="subjects-list">
-										<li>Define the Problem</li>
-										<li>Collect, Clean, and Prepare Data</li>
-										<li>Perform Exploratory Data Analysis</li>
-										<li>Analyze Data with Python</li>
-										<li>Create Visual Reports</li>
-										<li>Translate Data into Insights</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
+      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">Data · Python</div>
+            <div class="card-title">Demographic data analysis</div>
+            <div class="card-meta">
+              <span class="card-date">May 2023</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">Uncovered socioeconomic insights using Pandas on the 1994 US Census database — analyzing income, education, and occupation patterns.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">Python</span><span class="card-back-tag">Pandas</span><span class="card-back-tag">NumPy</span></div>
+              <a class="card-link" href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Demographic/Demographic%20data%20analyzer.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-				</div>
+      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">Data · Tableau</div>
+            <div class="card-title">Sales analysis dashboard</div>
+            <div class="card-meta">
+              <span class="card-date">Apr 2023</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">End-to-end Tableau dashboard from raw sales data to published visual report, exploring revenue, regional breakdowns, and trends.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">Tableau</span><span class="card-back-tag">Data viz</span></div>
+              <a class="card-link" href="https://public.tableau.com/shared/BZRMPD5D7?:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer">View on Tableau <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			</article>
+      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">Data · R</div>
+            <div class="card-title">Google BellaBeat case study</div>
+            <div class="card-meta">
+              <span class="card-date">May 2023</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">Analyzed smart device usage data to identify growth opportunities for BellaBeat, a women's health tech company. Full data-to-insight lifecycle.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">R</span><span class="card-back-tag">ggplot2</span><span class="card-back-tag">Data cleaning</span></div>
+              <a class="card-link" href="https://github.com/Anini-A/R-Project-Data-Analytics/blob/main/google-data-analytics-bellabeat-project.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<!-- Projects -->
-			<article id="projects">
-				<h2 class="major">💼Projects</h2>
+      <div class="card-flip" data-cat="it" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">IT · Network</div>
+            <div class="card-title">Network administrator — servers implementation</div>
+            <div class="card-meta">
+              <span class="card-date">Apr 2023</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">Designed and deployed a full network with AD, DHCP, DNS, IIS, printing, file sharing, and backup services for a simulated company environment.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">Windows Server</span><span class="card-back-tag">Active Directory</span><span class="card-back-tag">DNS/DHCP</span></div>
+              <a class="card-link" href="https://github.com/Anini-A/Academic-Projects/blob/main/README%20Network%20Admin.md" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-				<!-- Filter section -->
-				<div id="tagFilterContainer">
-					<!-- Dynamic tag buttons will be added here -->
-				</div>
+      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-type">Data · Python</div>
+            <div class="card-title">Medical data visualizer</div>
+            <div class="card-meta">
+              <span class="card-date">May 2023</span>
+              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-desc">Visualized medical examination data using Matplotlib and Seaborn to reveal correlations between health metrics and cardiovascular risk.</div>
+            <div class="card-back-footer">
+              <div class="card-back-tags"><span class="card-back-tag">Python</span><span class="card-back-tag">Seaborn</span><span class="card-back-tag">Matplotlib</span></div>
+              <a class="card-link" href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Medical%20Data/Medical%20Data%20Visualizer.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-				<!-- Project grid -->
-				<div class="project-grid">
+    </div>
+  </section>
 
-					<div class="project" data-tags="Data_analysis">
-						<div class="project-details">
-							<img src="images/demographic.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Demographic Data Analysis</h4>
-							<p class="project-description">Uncover insights with Pandas! Analyzing demographic data from
-								the 1994 Census database.</p>
-							<div class="project-date">05-27-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Demographic/Demographic%20data%20analyzer.ipynb"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Demographic Data Analysis')">
-									<span class="fa fa-folder-open"></span> Read more
-								</a>
-							</div>
-						</div>
-					</div>
+  <!-- SKILLS -->
+  <section class="panel" id="skills">
+    <div class="section-eyebrow">Skills & tools</div>
+    <div class="skills-grid">
 
-					<div class="project" data-tags="Data_analysis">
-						<div class="project-details">
-							<img src="images/sealevel.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Sea Level Predictor</h4>
-							<p class="project-description">I analyzed a dataset of the global average sea level change
-								since 1880. Used the data to predict the sea level change through the year 2050.</p>
-							<div class="project-date">05-27-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Sea%20Level/Sea%20Level%20Predictor.ipynb"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Sea Level Predictor')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div>
+        <div class="skill-group-label">Data & analytics</div>
+        <div class="skill-item">SQL <span class="skill-note">Primary tool</span></div>
+        <div class="skill-item">Looker Studio</div>
+        <div class="skill-item">Apache Preset</div>
+        <div class="skill-item">Tableau</div>
+        <div class="skill-item">Google Sheets <span class="skill-note">+ Scripts</span></div>
+        <div class="skill-item">Python <span class="skill-note">Supporting use</span></div>
+      </div>
 
-					<div class="project" data-tags="Data_analysis">
-						<div class="project-details">
-							<img src="images/medicaldata.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Medical Data analysis</h4>
-							<p class="project-description">Analyze medical examination data with Matplotlib, Seaborn,
-								and Pandas for insightful visualizations and calculations.</p>
-							<div class="project-date">05-27-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Medical%20Data/Medical%20Data%20Visualizer.ipynb"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Medical Data analysis')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div>
+        <div class="skill-group-label">Automation</div>
+        <div class="skill-item">Workato <span class="skill-note">Recipe development</span></div>
+        <div class="skill-item">JIRA automation</div>
+        <div class="skill-item">Google Apps Script</div>
+        <div class="skill-item">Notion <span class="skill-note">Docs & workflows</span></div>
+      </div>
 
-					<div class="project" data-tags="Data_analysis">
-						<div class="project-details">
-							<img src="images/wellnessdata.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Google - BellaBeat Case Study</h4>
-							<p class="project-description">Bellabeat is a tech-driven wellness company that makes
-								health-focused smart products for women. The company would like to uncover opportunities
-								for further growth.</p>
-							<div class="project-date">05-18-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/R-Project-Data-Analytics/blob/main/google-data-analytics-bellabeat-project.ipynb"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Google - BellaBeat Case Study')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div>
+        <div class="skill-group-label">IT & operations</div>
+        <div class="skill-item">ITIL v4 <span class="skill-note">Certified</span></div>
+        <div class="skill-item">ServiceNow</div>
+        <div class="skill-item">JIRA · Zendesk</div>
+        <div class="skill-item">Microsoft Intune</div>
+        <div class="skill-item">Citrix · Azure AD</div>
+        <div class="skill-item">Active Directory · Okta</div>
+      </div>
 
-					<div class="project" data-tags="Data_analysis">
-						<div class="project-details">
-							<img src="images/pageview.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Page View Time Series Visualizer</h4>
-							<p class="project-description">Used Pandas, Matplotlib, and Seaborn to visualize a dataset
-								containing the number of page views each day on the freeCodeCamp.org forum from
-								2016-05-09 to 2019-12-03.</p>
-							<div class="project-date">05-27-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Page%20View%20Time%20Series/Page%20View%20Time%20Series%20Visualizer.ipynb"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Page View Time Series Visualizer')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div>
+        <div class="skill-group-label">Languages & soft skills</div>
+        <div class="skill-item">English <span class="skill-note">Fluent</span></div>
+        <div class="skill-item">French <span class="skill-note">Fluent</span></div>
+        <div class="skill-item">Stakeholder management</div>
+        <div class="skill-item">Process documentation</div>
+        <div class="skill-item">Cross-functional collaboration</div>
+        <div class="skill-item">Training & mentorship</div>
+      </div>
 
-					<div class="project" data-tags="Data_analysis">
-						<div class="project-details">
-							<img src="images/sqlchallenge.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">SQL Challenge Unlocked!</h4>
-							<p class="project-description">
-								🔍 Mastered real-world SQL scenarios <br>
-								💡 Enhanced database querying skills
-							</p>
-							<div class="project-date">03-31-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/SQL-Challenge" class="read-more-link"
-									target="_blank" onclick="trackReadMoreClick('SQL Challenge Unlocked!')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+    </div>
+  </section>
 
-					<div class="project" data-tags="More">
-						<div class="project-details">
-							<img src="images/pwdgenerator.png" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Python password generator</h4>
-							<p class="project-description">Generate a password and store it in a txt file<br></p>
-							<div class="project-date">06-21-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/Password_generator/blob/main/psw_generator.ipynb"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Python password generator')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+  <!-- EDUCATION -->
+  <section class="panel" id="education">
+    <div class="section-eyebrow">Education & certifications</div>
+    <div class="edu-grid">
 
-					<div class="project" data-tags="Data_analysis">
-						<div class="project-details">
-							<img src="images/meanvar.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Mean-Variance-Standard Deviation Calculator</h4>
-							<p class="project-description">Created a function named calculate() that uses Numpy to
-								output the mean, variance, standard deviation, max, min, and sum of the rows, columns,
-								and elements in a 3 x 3 matrix.</p>
-							<div class="project-date">05-27-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Mean-Variance-Standard%20Deviation%20Calculator.ipynb"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Mean-Variance-Standard Deviation Calculator')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div class="edu-card">
+        <div class="edu-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+        </div>
+        <div class="edu-body">
+          <div class="edu-name">Google Data Analytics</div>
+          <div class="edu-by">Google · Coursera</div>
+          <div class="edu-type">Professional Certificate</div>
+        </div>
+        <div class="edu-year">2024</div>
+      </div>
 
-					<div class="project" data-tags="More">
-						<div class="project-details">
-							<img src="images/website.png" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">How I built my portfolio website?</h4>
-							<p class="project-description">And hosted for free 🆓 <br>Click the project to find out 😎
-							</p>
-							<div class="project-date">06-21-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/web/blob/main/README.md" class="read-more-link"
-									target="_blank" onclick="trackReadMoreClick('How I built my portfolio website?')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div class="edu-card">
+        <div class="edu-icon">
+          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="edu-body">
+          <div class="edu-name">Data Analysis with Python</div>
+          <div class="edu-by">FreeCodeCamp</div>
+          <div class="edu-type">Professional Certificate</div>
+        </div>
+        <div class="edu-year">2023</div>
+      </div>
 
-					<div class="project" data-tags="Data_analysis">
-						<div class="project-details">
-							<img src="images/salesanalysis.jpg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Sales Analysis with Tableau</h4>
-							<p class="project-description">In my journey to learn Tableau, I came across this
-								step-by-step dashboard creation!<br><br>Inspiration: <u><a
-										href="https://youtu.be/_qReGTOrKTk" target="_blank">Stanley Youtube
-										video</a></u> by <u><a
-										href="https://public.tableau.com/app/profile/stanley.george.joseph"
-										target="_blank">Stanley G.</a></u></p>
-							<div class="project-date">04-17-2023</div>
-							<div class="read-more">
-								<a href="https://public.tableau.com/shared/BZRMPD5D7?:display_count=n&:origin=viz_share_link"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Sales Analysis with Tableau')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div class="edu-card">
+        <div class="edu-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="edu-body">
+          <div class="edu-name">Product Management</div>
+          <div class="edu-by">TheCommons</div>
+          <div class="edu-type">Professional Certificate</div>
+        </div>
+        <div class="edu-year">2023</div>
+      </div>
 
-					<div class="project" data-tags="Network_admin">
-						<div class="project-details">
-							<img src="images/networkadmin.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Network administrator (servers implementation) 🇫🇷</h4>
-							<p class="project-description">Design a network with all its basic services (AD, DHCP, DNS,
-								ISS, Printing server, File sharing, Backup server) for a fictive company.</p>
-							<div class="project-date">04-02-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/Academic-Projects/blob/main/README%20Network%20Admin.md"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Network administrator')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div class="edu-card">
+        <div class="edu-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="edu-body">
+          <div class="edu-name">ITIL Foundation v4</div>
+          <div class="edu-by">AXELOS</div>
+          <div class="edu-type">Professional Certificate</div>
+        </div>
+        <div class="edu-year">2020</div>
+      </div>
 
-					<div class="project" data-tags="More">
-						<div class="project-details">
-							<img src="images/multimedia.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Multimedia editing 🇫🇷</h4>
-							<p class="project-description">Create and host a website to describe my city. Video, photo
-								and audio editing. </p>
-							<div class="project-date">04-01-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/Academic-Projects/blob/main/README%20Multimedia.md"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Multimedia editing')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div class="edu-card">
+        <div class="edu-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="edu-body">
+          <div class="edu-name">Computer Science</div>
+          <div class="edu-by">Université de Saint-Boniface 🇨🇦</div>
+          <div class="edu-type">Diploma · Network admin, IT project mgmt, databases</div>
+        </div>
+        <div class="edu-year">2018</div>
+      </div>
 
-					<div class="project" data-tags="Network_admin">
-						<div class="project-details">
-							<img src="images/fiberoptic.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">Fibre optic deployment (FTTH) 🇫🇷</h4>
-							<p class="project-description">Study of optical fiber deployment from the sub-distributor to
-								the customer's home</p>
-							<div class="project-date">04-01-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/Academic-Projects/blob/main/README%20Fiber%20To%20The%20Home.md"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('Fibre optic deployment (FTTH)')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
+      <div class="edu-card">
+        <div class="edu-icon">
+          <svg viewBox="0 0 24 24"><path d="M1 6l11 6 11-6M1 18l11-6 11 6"/></svg>
+        </div>
+        <div class="edu-body">
+          <div class="edu-name">SQL · Python 3</div>
+          <div class="edu-by">Codecademy</div>
+          <div class="edu-type">Professional Certificates</div>
+        </div>
+        <div class="edu-year">2021</div>
+      </div>
 
-					<div class="project" data-tags="Network_admin">
-						<div class="project-details">
-							<img src="images/ciscoise.jpeg" alt="Project Thumbnail" class="project-thumbnail">
-							<h4 class="project-title">CISCO ISE Deployment 🇫🇷</h4>
-							<p class="project-description">Cisco Identity Services Engine (ISE) This is an
-								identity-based network access control and policy enforcement system.</p>
-							<div class="project-date">04-01-2023</div>
-							<div class="read-more">
-								<a href="https://github.com/Anini-A/Academic-Projects/blob/main/README%20CISCO%20ISE%20Deployment.md"
-									class="read-more-link" target="_blank"
-									onclick="trackReadMoreClick('CISCO ISE Deployment')">
-									<span class="fa fa-folder-open"></span> Read more </a>
-							</div>
-						</div>
-					</div>
-				</div>
+      <div class="edu-card">
+        <div class="edu-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>
+        </div>
+        <div class="edu-body">
+          <div class="edu-name">Network & Telecommunications</div>
+          <div class="edu-by">Ecole Supérieure de Technologie 🇨🇮</div>
+          <div class="edu-type">Advanced Technical Diploma</div>
+        </div>
+        <div class="edu-year">2016</div>
+      </div>
 
-			</article>
+    </div>
+  </section>
 
-			<!-- Connect -->
-			<article id="connect">
-				<h2 class="major">📃Connect</h2>
-				<!--<span class="image main"><img src="images/resume1.png" alt="" /></span>-->
-				<section>
+  <!-- CONNECT -->
+  <section class="panel" id="connect">
+    <div class="section-eyebrow">Connect</div>
+    <div class="connect-wrap">
+      <h2 class="connect-headline">Let's talk.</h2>
+      <p class="connect-body">
+        Open to new opportunities in data operations, IT service management, and fintech. If you're looking for someone who bridges the technical and operational — reach out on LinkedIn.
+      </p>
+      <div class="connect-links">
+        <a class="connect-link" href="https://www.linkedin.com/in/anini-amoakon/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <div class="connect-link-label">
+            <div class="connect-link-name">LinkedIn</div>
+            <div class="connect-link-sub">linkedin.com/in/anini-amoakon</div>
+          </div>
+          <span class="connect-link-arrow">↗</span>
+        </a>
+        <a class="connect-link" href="https://github.com/Anini-A" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <div class="connect-link-label">
+            <div class="connect-link-name">GitHub</div>
+            <div class="connect-link-sub">github.com/Anini-A</div>
+          </div>
+          <span class="connect-link-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-					<p>Thank you for visiting my website. I appreciate your interest in my work. If you have any
-						questions or would like to discuss potential hiring or project opportunities, I invite you to
-						reach out to me through my LinkedIn, which you can find linked below. <br>
-						I look forward to connecting with you and exploring how I can bring value to your team or project.
-						
+</main>
 
-					</p>
-					<!-- <ul class="actions">
-						<li><a href="docs/Resume,%20Anini%20Amoakon.pdf" download="Resume, Anini Amoakon.pdf"
-								onclick="trackResumeDownload()" class="button primary icon solid fa-download">Download
-								Resume </a>
-						</li>
-					</ul> -->
-				</section>
-				<ul class="icons">
-					<li><a href="https://www.linkedin.com/in/anini-amoakon/" target="_blank"
-							class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-				</ul>
-			</article>
+<script>
+  function showPanel(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const idx = ['about','experience','projects','skills','education','connect'].indexOf(id);
+    const items = document.querySelectorAll('.sidebar .nav-item');
+    if (items[idx]) items[idx].classList.add('active');
+    document.querySelector('.main').scrollTo(0,0);
+  }
 
-		</div>
+  function filterProj(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.card-flip').forEach(c => {
+      c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'block' : 'none';
+    });
+  }
 
-		<!-- Footer -->
-		<footer id="footer">
-			<p class="copyright">&copy; Redesigned w/ <a href="https://html5up.net" target="_blank">HTML5</a>.</p>
-		</footer>
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
 
-	</div>
-
-	<!-- BG -->
-	<div id="bg"></div>
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/filter.js"></script>
-	<script src="assets/js/sorteduitem.js"></script>
-
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+</script>
 </body>
-
 </html>
