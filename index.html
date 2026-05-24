@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Anini Amoakon — Operations & Data Specialist." />
 <title>Anini — Operations & Data Specialist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,14 +16,13 @@
     --dune-mid: #4a4846;
     --dune-light: #6b6865;
     --cream: #FAF9F7;
-    --warm: #F3F0EB;
+    --warm: #F0EDE8;
     --border: #E2DDD8;
     --border-dark: #C8C2BB;
     --accent: #B8976A;
     --accent-light: #E8D9C4;
     --text-body: #4a4846;
     --text-muted: #8C8480;
-    --serif: 'EB Garamond', Georgia, serif;
     --sans: 'DM Sans', sans-serif;
   }
 
@@ -44,15 +44,16 @@
     background: var(--dune);
     display: flex;
     flex-direction: column;
-    padding: 40px 28px;
+    padding: 40px 20px;
     position: fixed;
     top: 0; left: 0; bottom: 0;
     z-index: 100;
   }
 
   .logo {
-    font-family: var(--serif);
-    font-size: 26px;
+    font-family: var(--sans);
+    font-size: 22px;
+    font-weight: 600;
     color: var(--cream);
     letter-spacing: -0.5px;
     margin-bottom: 4px;
@@ -71,7 +72,7 @@
     color: #5a5451;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   nav { display: flex; flex-direction: column; gap: 2px; }
@@ -80,22 +81,22 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 8px;
+    padding: 10px 12px;
     font-size: 13px;
     color: #9a9390;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: color 0.2s, background 0.2s;
     position: relative;
     user-select: none;
   }
 
-  .nav-item:hover { color: #ccc7c2; background: rgba(255,255,255,0.04); }
-  .nav-item.active { color: var(--cream); }
+  .nav-item:hover { color: #ccc7c2; background: rgba(255,255,255,0.06); }
+  .nav-item.active { color: var(--cream); background: rgba(255,255,255,0.08); }
   .nav-item.active::before {
     content: '';
     position: absolute;
-    left: -8px;
+    left: 0;
     top: 50%; transform: translateY(-50%);
     width: 3px; height: 16px;
     background: var(--accent);
@@ -157,11 +158,11 @@
 
   /* ── ABOUT ── */
   .about-headline {
-    font-family: var(--serif);
+    font-family: var(--sans);
     font-size: 52px;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.1;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
     color: var(--dune);
     margin-bottom: 28px;
     max-width: 560px;
@@ -170,6 +171,7 @@
   .about-headline em {
     font-style: italic;
     color: var(--accent);
+    font-weight: 300;
   }
 
   .about-body {
@@ -189,7 +191,7 @@
     border: 0.5px solid var(--border-dark);
     color: var(--text-body);
     letter-spacing: 0.3px;
-    border-radius: 2px;
+    border-radius: 20px;
     background: transparent;
   }
 
@@ -201,11 +203,13 @@
   }
 
   .stat-num {
-    font-family: var(--serif);
+    font-family: var(--sans);
     font-size: 36px;
+    font-weight: 300;
     color: var(--dune);
     line-height: 1;
     margin-bottom: 4px;
+    letter-spacing: -1px;
   }
 
   .stat-label {
@@ -269,9 +273,9 @@
   .tl-entry:last-child .tl-right { border-bottom: none; }
 
   .tl-role {
-    font-family: var(--serif);
+    font-family: var(--sans);
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--dune);
     margin-bottom: 4px;
     line-height: 1.2;
@@ -281,7 +285,7 @@
     font-size: 12px;
     color: var(--accent);
     font-style: italic;
-    font-family: var(--serif);
+    font-weight: 300;
     margin-bottom: 14px;
   }
 
@@ -312,11 +316,11 @@
 
   .tl-tag {
     font-size: 10px;
-    padding: 3px 8px;
+    padding: 3px 10px;
     background: var(--warm);
     color: var(--text-muted);
     border: 0.5px solid var(--border);
-    border-radius: 2px;
+    border-radius: 20px;
     letter-spacing: 0.3px;
   }
 
@@ -330,14 +334,14 @@
 
   .filter-btn {
     font-size: 11px;
-    padding: 6px 14px;
+    padding: 6px 16px;
     border: 0.5px solid var(--border-dark);
     background: transparent;
     color: var(--text-muted);
     cursor: pointer;
     font-family: var(--sans);
     letter-spacing: 0.5px;
-    border-radius: 2px;
+    border-radius: 20px;
     transition: all 0.15s;
   }
 
@@ -372,14 +376,17 @@
     width: 100%; height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    border: 0.5px solid var(--border);
-    border-radius: 4px;
+    border: 0.5px solid var(--border-dark);
+    border-radius: 12px;
     padding: 20px;
     display: flex;
     flex-direction: column;
   }
 
-  .card-front { background: var(--cream); }
+  .card-front {
+    background: var(--warm);
+    box-shadow: 0 2px 8px rgba(50,48,47,0.08), 0 0 0 0.5px var(--border);
+  }
   .card-back { background: var(--dune); transform: rotateY(180deg); }
 
   .card-type {
@@ -391,8 +398,9 @@
   }
 
   .card-title {
-    font-family: var(--serif);
-    font-size: 17px;
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 500;
     color: var(--dune);
     line-height: 1.3;
     flex: 1;
@@ -431,10 +439,10 @@
 
   .card-back-tag {
     font-size: 9px;
-    padding: 2px 7px;
+    padding: 2px 8px;
     background: rgba(255,255,255,0.08);
     color: #9a9390;
-    border-radius: 2px;
+    border-radius: 20px;
     letter-spacing: 0.3px;
   }
 
@@ -498,16 +506,17 @@
     gap: 16px;
     padding: 18px 20px;
     border: 0.5px solid var(--border);
-    border-radius: 4px;
+    border-radius: 12px;
     background: var(--cream);
-    transition: border-color 0.2s;
+    box-shadow: 0 1px 4px rgba(50,48,47,0.05);
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
 
-  .edu-card:hover { border-color: var(--border-dark); }
+  .edu-card:hover { border-color: var(--border-dark); box-shadow: 0 2px 8px rgba(50,48,47,0.08); }
 
   .edu-icon {
     width: 36px; height: 36px;
-    border-radius: 4px;
+    border-radius: 8px;
     background: var(--warm);
     border: 0.5px solid var(--border);
     display: flex; align-items: center; justify-content: center;
@@ -539,61 +548,11 @@
 
   .edu-year {
     font-size: 12px;
+    font-weight: 300;
     color: var(--text-muted);
-    font-family: var(--serif);
     flex-shrink: 0;
     margin-top: 2px;
   }
-
-  /* ── CONNECT ── */
-  .connect-wrap { max-width: 480px; }
-
-  .connect-headline {
-    font-family: var(--serif);
-    font-size: 44px;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
-  }
-
-  .connect-body {
-    font-size: 14px;
-    color: var(--text-body);
-    line-height: 1.75;
-    margin-bottom: 36px;
-    font-weight: 300;
-    max-width: 380px;
-  }
-
-  .connect-links { display: flex; flex-direction: column; gap: 10px; }
-
-  .connect-link {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 20px;
-    border: 0.5px solid var(--border);
-    border-radius: 4px;
-    color: var(--dune);
-    text-decoration: none;
-    font-size: 13px;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .connect-link:hover { border-color: var(--dune); background: var(--warm); }
-
-  .connect-link svg {
-    width: 18px; height: 18px;
-    stroke: var(--text-muted); fill: none; stroke-width: 1.5;
-    flex-shrink: 0;
-  }
-
-  .connect-link-label { flex: 1; }
-  .connect-link-name { font-weight: 500; margin-bottom: 1px; }
-  .connect-link-sub { font-size: 11px; color: var(--text-muted); }
-
-  .connect-link-arrow { color: var(--text-muted); font-size: 16px; }
 
   /* ── MOBILE ── */
   .mobile-header {
@@ -607,7 +566,7 @@
     justify-content: space-between;
   }
 
-  .mobile-logo { font-family: var(--serif); font-size: 20px; color: var(--cream); }
+  .mobile-logo { font-family: var(--sans); font-size: 20px; font-weight: 600; color: var(--cream); }
 
   .hamburger {
     background: none; border: none; cursor: pointer;
@@ -625,7 +584,7 @@
     top: 52px; left: 0; right: 0; bottom: 0;
     background: var(--dune);
     z-index: 150;
-    padding: 32px 28px;
+    padding: 32px 20px;
     flex-direction: column;
     gap: 4px;
   }
@@ -664,7 +623,6 @@
   <div class="nav-item" onclick="showPanel('projects'); closeMobileNav()">Projects</div>
   <div class="nav-item" onclick="showPanel('skills'); closeMobileNav()">Skills</div>
   <div class="nav-item" onclick="showPanel('education'); closeMobileNav()">Education</div>
-  <div class="nav-item" onclick="showPanel('connect'); closeMobileNav()">Connect</div>
 </div>
 
 <!-- Sidebar -->
@@ -693,10 +651,6 @@
     <div class="nav-item" onclick="showPanel('education')">
       <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
       Education
-    </div>
-    <div class="nav-item" onclick="showPanel('connect')">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Connect
     </div>
   </nav>
 
@@ -997,7 +951,7 @@
             <div class="card-desc">End-to-end Tableau dashboard from raw sales data to published visual report, exploring revenue, regional breakdowns, and trends.</div>
             <div class="card-back-footer">
               <div class="card-back-tags"><span class="card-back-tag">Tableau</span><span class="card-back-tag">Data viz</span></div>
-              <a class="card-link" href="https://public.tableau.com/shared/BZRMPD5D7?:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer">View on Tableau <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              <a class="card-link" href="https://public.tableau.com/views/CustomerAnalysis_16811002399650/SalesAnalysis?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer">View on Tableau <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
             </div>
           </div>
         </div>
@@ -1091,9 +1045,7 @@
 
       <div>
         <div class="skill-group-label">IT & operations</div>
-        <div class="skill-item">ITIL v4 <span class="skill-note">Certified</span></div>
-        <div class="skill-item">ServiceNow</div>
-        <div class="skill-item">JIRA · Zendesk</div>
+        <div class="skill-item">ServiceNow · JIRA · Zendesk</div>
         <div class="skill-item">Microsoft Intune</div>
         <div class="skill-item">Citrix · Azure AD</div>
         <div class="skill-item">Active Directory · Okta</div>
@@ -1204,35 +1156,6 @@
     </div>
   </section>
 
-  <!-- CONNECT -->
-  <section class="panel" id="connect">
-    <div class="section-eyebrow">Connect</div>
-    <div class="connect-wrap">
-      <h2 class="connect-headline">Let's talk.</h2>
-      <p class="connect-body">
-        Open to new opportunities in data operations, IT service management, and fintech. If you're looking for someone who bridges the technical and operational — reach out on LinkedIn.
-      </p>
-      <div class="connect-links">
-        <a class="connect-link" href="https://www.linkedin.com/in/anini-amoakon/" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <div class="connect-link-label">
-            <div class="connect-link-name">LinkedIn</div>
-            <div class="connect-link-sub">linkedin.com/in/anini-amoakon</div>
-          </div>
-          <span class="connect-link-arrow">↗</span>
-        </a>
-        <a class="connect-link" href="https://github.com/Anini-A" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          <div class="connect-link-label">
-            <div class="connect-link-name">GitHub</div>
-            <div class="connect-link-sub">github.com/Anini-A</div>
-          </div>
-          <span class="connect-link-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <script>
@@ -1240,7 +1163,7 @@
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    const idx = ['about','experience','projects','skills','education','connect'].indexOf(id);
+    const idx = ['about','experience','projects','skills','education'].indexOf(id);
     const items = document.querySelectorAll('.sidebar .nav-item');
     if (items[idx]) items[idx].classList.add('active');
     document.querySelector('.main').scrollTo(0,0);
