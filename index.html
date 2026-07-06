@@ -56,6 +56,8 @@
     --border: #E2DDD8;
     --border-dark: #C8C2BB;
     --accent: #B8976A;
+    --accent-text: #8A6639;
+    --accent-on-dark: #C4A67C;
     --accent-light: #E8D9C4;
     --text-body: #4a4846;
     --text-muted: #8C8480;
@@ -65,7 +67,7 @@
     --glass-border: rgba(255,255,255,0.8);
     --glass-shadow: 0 8px 32px rgba(50,48,47,0.10);
     --glass-sheen: inset 0 1px 0 rgba(255,255,255,0.6);
-    --glass-dark-bg: rgba(50,48,47,0.80);
+    --glass-dark-bg: rgba(50,48,47,0.95);
     --glass-dark-border: rgba(255,255,255,0.08);
   }
 
@@ -123,7 +125,7 @@
 
   .logo-tagline {
     font-size: 9px;
-    color: var(--accent);
+    color: var(--accent-on-dark);
     letter-spacing: 2.5px;
     text-transform: uppercase;
     margin-bottom: 48px;
@@ -146,7 +148,7 @@
     padding: 10px 12px;
     font-size: 13px;
     font-family: inherit;
-    color: #9a9390;
+    color: #C9C4C0;
     cursor: pointer;
     border-radius: 8px;
     background: none;
@@ -157,7 +159,7 @@
     position: relative;
   }
 
-  .nav-item:hover { color: #ccc7c2; background: rgba(255,255,255,0.06); }
+  .nav-item:hover { color: #E0DCD8; background: rgba(255,255,255,0.06); }
   .nav-item.active { color: var(--cream); background: rgba(255,255,255,0.08); }
   .nav-item.active::before {
     content: '';
@@ -170,11 +172,15 @@
   }
 
   .nav-item:focus-visible,
+  .hamburger:focus-visible {
+    outline: 2px solid var(--accent-on-dark);
+    outline-offset: 2px;
+  }
+
   .filter-btn:focus-visible,
   .proj-card:focus-visible,
-  .modal-close:focus-visible,
-  .hamburger:focus-visible {
-    outline: 2px solid var(--accent);
+  .modal-close:focus-visible {
+    outline: 2px solid var(--dune);
     outline-offset: 2px;
   }
 
@@ -188,7 +194,7 @@
   }
 
   .sidebar-footer a { color: #6b6865; text-decoration: none; }
-  .sidebar-footer a:hover { color: var(--accent); }
+  .sidebar-footer a:hover { color: var(--accent-on-dark); }
 
   /* ── MAIN ── */
   .main {
@@ -216,7 +222,7 @@
     font-size: 9px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 24px;
     display: flex;
     align-items: center;
@@ -245,7 +251,7 @@
 
   .about-headline em {
     font-style: italic;
-    color: var(--accent);
+    color: var(--accent-text);
     font-weight: 300;
   }
 
@@ -358,7 +364,7 @@
 
   .tl-outcome {
     font-size: 12px;
-    color: var(--accent);
+    color: var(--accent-text);
     font-style: italic;
     font-weight: 300;
     margin-bottom: 14px;
@@ -455,7 +461,7 @@
     font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 10px;
   }
 
@@ -483,7 +489,7 @@
     letter-spacing: 0.3px;
   }
 
-  .proj-card:hover .card-cta { color: var(--accent); }
+  .proj-card:hover .card-cta { color: var(--accent-text); }
 
   /* ── PROJECT MODAL ── */
   .modal-overlay {
@@ -548,7 +554,7 @@
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 12px;
   }
 
@@ -634,7 +640,7 @@
     font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 14px;
     padding-bottom: 10px;
     border-bottom: 0.5px solid var(--border);
@@ -743,7 +749,7 @@
 
   .edu-type {
     font-size: 10px;
-    color: var(--accent);
+    color: var(--accent-text);
     letter-spacing: 0.5px;
   }
 
@@ -793,7 +799,7 @@
 
   .cert-year {
     font-size: 10px;
-    color: var(--accent);
+    color: var(--accent-text);
     font-weight: 500;
     margin-top: 6px;
     letter-spacing: 0.5px;
