@@ -276,7 +276,7 @@
     background: var(--glass-bg);
     backdrop-filter: blur(14px) saturate(160%);
     -webkit-backdrop-filter: blur(14px) saturate(160%);
-    box-shadow: var(--glass-sheen);
+    box-shadow: var(--glass-shadow), var(--glass-sheen);
   }
 
   .about-stats {
@@ -408,6 +408,7 @@
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     letter-spacing: 0.3px;
+    box-shadow: var(--glass-shadow), var(--glass-sheen);
   }
 
   /* ── PROJECTS ── */
@@ -692,6 +693,7 @@
     background: var(--glass-bg);
     backdrop-filter: blur(14px) saturate(160%);
     -webkit-backdrop-filter: blur(14px) saturate(160%);
+    box-shadow: var(--glass-shadow), var(--glass-sheen);
   }
 
   /* ── EDUCATION ── */
@@ -1082,11 +1084,11 @@
     </div>
     <div class="proj-grid" id="projGrid">
 
-      <button type="button" class="proj-card" data-cat="ops" onclick="openModal('modal-1', this)">
-        <div class="card-type">Ops · Automation</div>
-        <div class="card-title">JIRA ticket assignment automation</div>
+      <button type="button" class="proj-card" data-cat="ops" onclick="openModal('modal-4', this)">
+        <div class="card-type">Ops · Analysis</div>
+        <div class="card-title">KYC concurrent update data investigation</div>
         <div class="card-meta">
-          <span class="card-date">Jan 2025</span>
+          <span class="card-date">Sep 2025</span>
           <span class="card-cta">View details →</span>
         </div>
       </button>
@@ -1100,20 +1102,20 @@
         </div>
       </button>
 
+      <button type="button" class="proj-card" data-cat="ops" onclick="openModal('modal-1', this)">
+        <div class="card-type">Ops · Automation</div>
+        <div class="card-title">JIRA ticket assignment automation</div>
+        <div class="card-meta">
+          <span class="card-date">Jan 2025</span>
+          <span class="card-cta">View details →</span>
+        </div>
+      </button>
+
       <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-3', this)">
         <div class="card-type">Data · Dashboard</div>
         <div class="card-title">DragonPass HNW rewards dashboard</div>
         <div class="card-meta">
           <span class="card-date">Nov 2023</span>
-          <span class="card-cta">View details →</span>
-        </div>
-      </button>
-
-      <button type="button" class="proj-card" data-cat="ops" onclick="openModal('modal-4', this)">
-        <div class="card-type">Ops · Analysis</div>
-        <div class="card-title">KYC concurrent update data investigation</div>
-        <div class="card-meta">
-          <span class="card-date">Sep 2025</span>
           <span class="card-cta">View details →</span>
         </div>
       </button>
@@ -1136,15 +1138,6 @@
         </div>
       </button>
 
-      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-7', this)">
-        <div class="card-type">Data · Tableau</div>
-        <div class="card-title">Sales analysis dashboard</div>
-        <div class="card-meta">
-          <span class="card-date">Apr 2023</span>
-          <span class="card-cta">View details →</span>
-        </div>
-      </button>
-
       <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-8', this)">
         <div class="card-type">Data · R</div>
         <div class="card-title">Google BellaBeat case study</div>
@@ -1154,20 +1147,29 @@
         </div>
       </button>
 
-      <button type="button" class="proj-card" data-cat="it" onclick="openModal('modal-9', this)">
-        <div class="card-type">IT · Network</div>
-        <div class="card-title">Network administrator — servers implementation</div>
+      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-10', this)">
+        <div class="card-type">Data · Python</div>
+        <div class="card-title">Medical data visualizer</div>
+        <div class="card-meta">
+          <span class="card-date">May 2023</span>
+          <span class="card-cta">View details →</span>
+        </div>
+      </button>
+
+      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-7', this)">
+        <div class="card-type">Data · Tableau</div>
+        <div class="card-title">Sales analysis dashboard</div>
         <div class="card-meta">
           <span class="card-date">Apr 2023</span>
           <span class="card-cta">View details →</span>
         </div>
       </button>
 
-      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-10', this)">
-        <div class="card-type">Data · Python</div>
-        <div class="card-title">Medical data visualizer</div>
+      <button type="button" class="proj-card" data-cat="it" onclick="openModal('modal-9', this)">
+        <div class="card-type">IT · Network</div>
+        <div class="card-title">Network administrator — servers implementation</div>
         <div class="card-meta">
-          <span class="card-date">May 2023</span>
+          <span class="card-date">Apr 2023</span>
           <span class="card-cta">View details →</span>
         </div>
       </button>
