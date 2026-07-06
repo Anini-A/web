@@ -5,6 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Portfolio of Anini Amoakon — Operations & Data Specialist." />
 <title>Anini — Operations & Data Specialist</title>
+<link rel="canonical" href="https://anini-a.github.io/web/">
+<link rel="icon" type="image/png" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anini-a.github.io/web/">
+<meta property="og:title" content="Anini — Operations & Data Specialist">
+<meta property="og:description" content="5+ years building data tools, automating compliance workflows, and solving complex operational problems at scale — across fintech and enterprise IT.">
+<meta property="og:image" content="https://anini-a.github.io/web/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anini — Operations & Data Specialist">
+<meta name="twitter:description" content="5+ years building data tools, automating compliance workflows, and solving complex operational problems at scale — across fintech and enterprise IT.">
+<meta name="twitter:image" content="https://anini-a.github.io/web/icons/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Anini Amoakon",
+  "jobTitle": "Operations & Data Specialist",
+  "url": "https://anini-a.github.io/web/",
+  "sameAs": [
+    "https://github.com/Anini-A",
+    "https://www.linkedin.com/in/anini-amoakon/"
+  ],
+  "description": "5+ years building data tools, automating compliance workflows, and solving complex operational problems at scale — across fintech and enterprise IT."
+}
+</script>
+<!-- TODO: replace G-XXXXXXXXXX with the real GA4 Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
@@ -24,6 +60,13 @@
     --text-body: #4a4846;
     --text-muted: #8C8480;
     --sans: 'DM Sans', sans-serif;
+
+    --glass-bg: rgba(255,255,255,0.5);
+    --glass-border: rgba(255,255,255,0.6);
+    --glass-shadow: 0 8px 32px rgba(50,48,47,0.10);
+    --glass-sheen: inset 0 1px 0 rgba(255,255,255,0.6);
+    --glass-dark-bg: rgba(50,48,47,0.80);
+    --glass-dark-border: rgba(255,255,255,0.08);
   }
 
   html { scroll-behavior: smooth; }
@@ -37,16 +80,35 @@
     overflow: hidden;
   }
 
+  body.modal-open { overflow: hidden; }
+
+  /* ── AURORA BACKDROP ── */
+  .bg-aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(620px circle at 14% 20%, rgba(184,151,106,0.20), transparent 60%),
+      radial-gradient(560px circle at 88% 14%, rgba(107,104,101,0.16), transparent 60%),
+      radial-gradient(640px circle at 22% 90%, rgba(184,151,106,0.14), transparent 60%);
+    filter: blur(20px) saturate(140%);
+  }
+
   /* ── SIDEBAR ── */
   .sidebar {
     width: 220px;
     min-width: 220px;
-    background: var(--dune);
+    background: var(--glass-dark-bg);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid var(--glass-dark-border);
+    box-shadow: 0 8px 32px rgba(20,18,17,0.22);
     display: flex;
     flex-direction: column;
     padding: 40px 20px;
     position: fixed;
-    top: 0; left: 0; bottom: 0;
+    top: 16px; left: 16px; bottom: 16px;
+    border-radius: 24px;
     z-index: 100;
   }
 
@@ -83,12 +145,16 @@
     gap: 10px;
     padding: 10px 12px;
     font-size: 13px;
+    font-family: inherit;
     color: #9a9390;
     cursor: pointer;
     border-radius: 8px;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
     transition: color 0.2s, background 0.2s;
     position: relative;
-    user-select: none;
   }
 
   .nav-item:hover { color: #ccc7c2; background: rgba(255,255,255,0.06); }
@@ -101,6 +167,15 @@
     width: 3px; height: 16px;
     background: var(--accent);
     border-radius: 0 2px 2px 0;
+  }
+
+  .nav-item:focus-visible,
+  .filter-btn:focus-visible,
+  .proj-card:focus-visible,
+  .modal-close:focus-visible,
+  .hamburger:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 
   .nav-item svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.5; flex-shrink: 0; }
@@ -117,7 +192,7 @@
 
   /* ── MAIN ── */
   .main {
-    margin-left: 220px;
+    margin-left: 252px;
     flex: 1;
     overflow-y: auto;
     height: 100vh;
@@ -192,7 +267,7 @@
     color: var(--text-body);
     letter-spacing: 0.3px;
     border-radius: 20px;
-    background: transparent;
+    background: var(--glass-bg);
   }
 
   .about-stats {
@@ -317,7 +392,7 @@
   .tl-tag {
     font-size: 10px;
     padding: 3px 10px;
-    background: var(--warm);
+    background: var(--glass-bg);
     color: var(--text-muted);
     border: 0.5px solid var(--border);
     border-radius: 20px;
@@ -354,40 +429,27 @@
     gap: 16px;
   }
 
-  .card-flip {
-    perspective: 900px;
-    height: 180px;
+  .proj-card {
+    font-family: inherit;
+    text-align: left;
     cursor: pointer;
-  }
-
-  .card-flip[style*="display: none"] { display: none !important; }
-
-  .card-inner {
-    position: relative;
-    width: 100%; height: 100%;
-    transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
-    transform-style: preserve-3d;
-  }
-
-  .card-flip.flipped .card-inner { transform: rotateY(180deg); }
-
-  .card-front, .card-back {
-    position: absolute;
-    width: 100%; height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    border: 0.5px solid var(--border-dark);
-    border-radius: 12px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), var(--glass-sheen);
+    border-radius: 20px;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    min-height: 152px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .card-front {
-    background: var(--warm);
-    box-shadow: 0 2px 8px rgba(50,48,47,0.08), 0 0 0 0.5px var(--border);
+  .proj-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(50,48,47,0.14), var(--glass-sheen);
   }
-  .card-back { background: var(--dune); transform: rotateY(180deg); }
 
   .card-type {
     font-size: 9px;
@@ -415,50 +477,132 @@
 
   .card-date { font-size: 10px; color: var(--text-muted); }
 
-  .card-hint {
+  .card-cta {
     font-size: 10px;
     color: var(--border-dark);
+    letter-spacing: 0.3px;
+  }
+
+  .proj-card:hover .card-cta { color: var(--accent); }
+
+  /* ── PROJECT MODAL ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
     display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(24,22,21,0.55);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
   }
 
-  .card-hint svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+  .modal-overlay.open { opacity: 1; visibility: visible; }
 
-  .card-desc {
-    font-size: 12px;
-    color: #9a9390;
-    line-height: 1.6;
-    flex: 1;
+  .modal-panel {
+    width: 100%;
+    max-width: 560px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: var(--glass-bg);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 24px 60px rgba(20,18,17,0.35), var(--glass-sheen);
+    border-radius: 26px;
+    padding: 40px;
+    position: relative;
+    transform: scale(0.92) translateY(14px);
+    opacity: 0;
+    transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease;
+  }
+
+  .modal-overlay.open .modal-panel { transform: scale(1) translateY(0); opacity: 1; }
+
+  .modal-panel:focus { outline: none; }
+
+  .modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 0.5px solid var(--border-dark);
+    background: var(--cream);
+    color: var(--dune);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .modal-close:hover { background: var(--dune); color: var(--cream); }
+
+  .modal-type {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .modal-title {
+    font-family: var(--sans);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--dune);
+    line-height: 1.3;
+    max-width: 440px;
+    margin-bottom: 6px;
+  }
+
+  .modal-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .modal-desc {
+    font-size: 14.5px;
+    color: var(--text-body);
+    line-height: 1.75;
     font-weight: 300;
+    margin-bottom: 24px;
   }
 
-  .card-back-footer { margin-top: auto; }
+  .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
 
-  .card-back-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
-
-  .card-back-tag {
-    font-size: 9px;
-    padding: 2px 8px;
-    background: rgba(255,255,255,0.08);
-    color: #9a9390;
+  .modal-tag {
+    font-size: 11px;
+    padding: 4px 12px;
+    background: var(--accent-light);
+    color: var(--dune-mid);
     border-radius: 20px;
     letter-spacing: 0.3px;
   }
 
-  .card-link {
-    font-size: 10px;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: 0.5px;
+  .modal-link {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    transition: opacity 0.15s;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    background: var(--dune);
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.15s;
   }
 
-  .card-link:hover { opacity: 0.75; }
-  .card-link svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .modal-link:hover { background: var(--dune-mid); }
+  .modal-link svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
 
   /* ── SKILLS ── */
   .skills-section-label {
@@ -477,11 +621,13 @@
   }
 
   .tool-card {
-    border: 0.5px solid var(--border-dark);
-    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
     padding: 18px 20px;
-    background: var(--warm);
-    box-shadow: 0 2px 8px rgba(50,48,47,0.08);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    box-shadow: var(--glass-shadow);
   }
 
   .tool-card-label {
@@ -532,7 +678,7 @@
     border: 0.5px solid var(--border-dark);
     border-radius: 20px;
     color: var(--text-body);
-    background: var(--cream);
+    background: var(--glass-bg);
   }
 
   /* ── EDUCATION ── */
@@ -558,18 +704,20 @@
     align-items: flex-start;
     gap: 16px;
     padding: 20px;
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    background: var(--cream);
-    box-shadow: 0 1px 4px rgba(50,48,47,0.05);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    box-shadow: var(--glass-shadow);
+    transition: box-shadow 0.2s;
   }
 
-  .edu-card:hover { border-color: var(--border-dark); box-shadow: 0 2px 8px rgba(50,48,47,0.08); }
+  .edu-card:hover { box-shadow: 0 14px 32px rgba(50,48,47,0.12); }
 
   .edu-icon {
     width: 36px; height: 36px;
-    border-radius: 8px;
+    border-radius: 10px;
     background: var(--warm);
     border: 0.5px solid var(--border);
     display: flex; align-items: center; justify-content: center;
@@ -617,17 +765,19 @@
 
   .cert-card {
     padding: 16px 18px;
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    background: var(--warm);
-    box-shadow: 0 1px 4px rgba(50,48,47,0.05);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    box-shadow: var(--glass-shadow);
+    transition: box-shadow 0.2s;
     display: flex;
     flex-direction: column;
     gap: 3px;
   }
 
-  .cert-card:hover { border-color: var(--border-dark); box-shadow: 0 2px 8px rgba(50,48,47,0.08); }
+  .cert-card:hover { box-shadow: 0 14px 32px rgba(50,48,47,0.12); }
 
   .cert-name {
     font-size: 13px;
@@ -652,7 +802,8 @@
   /* ── MOBILE ── */
   .mobile-header {
     display: none;
-    background: var(--dune);
+    background: var(--glass-dark-bg);
+    backdrop-filter: blur(20px) saturate(160%);
     padding: 16px 20px;
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -701,10 +852,14 @@
     .edu-certs { grid-template-columns: 1fr 1fr; }
     .proj-grid { grid-template-columns: 1fr; }
     .about-stats { gap: 24px; flex-wrap: wrap; }
+    .modal-panel { padding: 28px; max-height: 90vh; }
+    .modal-title { font-size: 20px; }
   }
 </style>
 </head>
 <body>
+
+<div class="bg-aurora" aria-hidden="true"></div>
 
 <!-- Mobile header -->
 <header class="mobile-header">
@@ -715,11 +870,11 @@
 </header>
 
 <div class="mobile-nav" id="mobileNav">
-  <div class="nav-item active" onclick="showPanel('about'); closeMobileNav()">About</div>
-  <div class="nav-item" onclick="showPanel('experience'); closeMobileNav()">Experience</div>
-  <div class="nav-item" onclick="showPanel('projects'); closeMobileNav()">Projects</div>
-  <div class="nav-item" onclick="showPanel('skills'); closeMobileNav()">Skills</div>
-  <div class="nav-item" onclick="showPanel('education'); closeMobileNav()">Education</div>
+  <button type="button" class="nav-item active" onclick="showPanel('about'); closeMobileNav()">About</button>
+  <button type="button" class="nav-item" onclick="showPanel('experience'); closeMobileNav()">Experience</button>
+  <button type="button" class="nav-item" onclick="showPanel('projects'); closeMobileNav()">Projects</button>
+  <button type="button" class="nav-item" onclick="showPanel('skills'); closeMobileNav()">Skills</button>
+  <button type="button" class="nav-item" onclick="showPanel('education'); closeMobileNav()">Education</button>
 </div>
 
 <!-- Sidebar -->
@@ -729,26 +884,26 @@
 
   <div class="nav-label">Navigate</div>
   <nav>
-    <div class="nav-item active" onclick="showPanel('about')">
+    <button type="button" class="nav-item active" onclick="showPanel('about')">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
       About
-    </div>
-    <div class="nav-item" onclick="showPanel('experience')">
+    </button>
+    <button type="button" class="nav-item" onclick="showPanel('experience')">
       <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
       Experience
-    </div>
-    <div class="nav-item" onclick="showPanel('projects')">
+    </button>
+    <button type="button" class="nav-item" onclick="showPanel('projects')">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       Projects
-    </div>
-    <div class="nav-item" onclick="showPanel('skills')">
+    </button>
+    <button type="button" class="nav-item" onclick="showPanel('skills')">
       <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
       Skills
-    </div>
-    <div class="nav-item" onclick="showPanel('education')">
+    </button>
+    <button type="button" class="nav-item" onclick="showPanel('education')">
       <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
       Education
-    </div>
+    </button>
   </nav>
 
   <div class="sidebar-footer">
@@ -914,201 +1069,95 @@
     </div>
     <div class="proj-grid" id="projGrid">
 
-      <div class="card-flip" data-cat="ops" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">Ops · Automation</div>
-            <div class="card-title">JIRA ticket assignment automation</div>
-            <div class="card-meta">
-              <span class="card-date">Jan 2025</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">Eliminated ~2.6 hrs/day of manual work. Analyzed 4,782 tickets over 61 days and designed a round-robin distribution system using JIRA automation rules.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">JIRA</span><span class="card-back-tag">Google Sheets</span><span class="card-back-tag">Scripts</span><span class="card-back-tag">Looker</span></div>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="ops" onclick="openModal('modal-1', this)">
+        <div class="card-type">Ops · Automation</div>
+        <div class="card-title">JIRA ticket assignment automation</div>
+        <div class="card-meta">
+          <span class="card-date">Jan 2025</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
-      <div class="card-flip" data-cat="ops" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">Ops · Compliance</div>
-            <div class="card-title">MEP & RTP compliance remediation workflow</div>
-            <div class="card-meta">
-              <span class="card-date">Aug 2025</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">Built a monthly SQL-driven process to identify and remediate regulatory compliance accounts. Established SLAs, verification steps, and repeatable documentation.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">SQL</span><span class="card-back-tag">Compliance</span><span class="card-back-tag">Process design</span><span class="card-back-tag">Notion</span></div>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="ops" onclick="openModal('modal-2', this)">
+        <div class="card-type">Ops · Compliance</div>
+        <div class="card-title">MEP & RTP compliance remediation workflow</div>
+        <div class="card-meta">
+          <span class="card-date">Aug 2025</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
-      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">Data · Dashboard</div>
-            <div class="card-title">DragonPass HNW rewards dashboard</div>
-            <div class="card-meta">
-              <span class="card-date">Nov 2023</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">SQL + Apache Preset dashboard enabling airport lounge code distribution to clients with $500K+ in deposits. Built with data engineers, validated before full rollout.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">SQL</span><span class="card-back-tag">Apache Preset</span><span class="card-back-tag">Data viz</span></div>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-3', this)">
+        <div class="card-type">Data · Dashboard</div>
+        <div class="card-title">DragonPass HNW rewards dashboard</div>
+        <div class="card-meta">
+          <span class="card-date">Nov 2023</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
-      <div class="card-flip" data-cat="ops" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">Ops · Analysis</div>
-            <div class="card-title">KYC concurrent update data investigation</div>
-            <div class="card-meta">
-              <span class="card-date">Sep 2025</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">Investigated frequency of simultaneous Name + SIN KYC updates over 6 months. Wrote targeted SQL, built a Looker chart, and delivered findings to stakeholders for engineering review.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">SQL</span><span class="card-back-tag">Looker</span><span class="card-back-tag">Data analysis</span></div>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="ops" onclick="openModal('modal-4', this)">
+        <div class="card-type">Ops · Analysis</div>
+        <div class="card-title">KYC concurrent update data investigation</div>
+        <div class="card-meta">
+          <span class="card-date">Sep 2025</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
-      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">Data · Python</div>
-            <div class="card-title">Sea level predictor</div>
-            <div class="card-meta">
-              <span class="card-date">May 2023</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">Analyzed global average sea level change since 1880 and built a linear regression model forecasting change through 2050.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">Python</span><span class="card-back-tag">Pandas</span><span class="card-back-tag">Matplotlib</span></div>
-              <a class="card-link" href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Sea%20Level/Sea%20Level%20Predictor.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-5', this)">
+        <div class="card-type">Data · Python</div>
+        <div class="card-title">Sea level predictor</div>
+        <div class="card-meta">
+          <span class="card-date">May 2023</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
-      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">Data · Python</div>
-            <div class="card-title">Demographic data analysis</div>
-            <div class="card-meta">
-              <span class="card-date">May 2023</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">Uncovered socioeconomic insights using Pandas on the 1994 US Census database — analyzing income, education, and occupation patterns.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">Python</span><span class="card-back-tag">Pandas</span><span class="card-back-tag">NumPy</span></div>
-              <a class="card-link" href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Demographic/Demographic%20data%20analyzer.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-6', this)">
+        <div class="card-type">Data · Python</div>
+        <div class="card-title">Demographic data analysis</div>
+        <div class="card-meta">
+          <span class="card-date">May 2023</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
-      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">Data · Tableau</div>
-            <div class="card-title">Sales analysis dashboard</div>
-            <div class="card-meta">
-              <span class="card-date">Apr 2023</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">End-to-end Tableau dashboard from raw sales data to published visual report, exploring revenue, regional breakdowns, and trends.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">Tableau</span><span class="card-back-tag">Data viz</span></div>
-              <a class="card-link" href="https://public.tableau.com/views/CustomerAnalysis_16811002399650/SalesAnalysis?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer">View on Tableau <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-7', this)">
+        <div class="card-type">Data · Tableau</div>
+        <div class="card-title">Sales analysis dashboard</div>
+        <div class="card-meta">
+          <span class="card-date">Apr 2023</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
-      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">Data · R</div>
-            <div class="card-title">Google BellaBeat case study</div>
-            <div class="card-meta">
-              <span class="card-date">May 2023</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">Analyzed smart device usage data to identify growth opportunities for BellaBeat, a women's health tech company. Full data-to-insight lifecycle.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">R</span><span class="card-back-tag">ggplot2</span><span class="card-back-tag">Data cleaning</span></div>
-              <a class="card-link" href="https://github.com/Anini-A/R-Project-Data-Analytics/blob/main/google-data-analytics-bellabeat-project.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-8', this)">
+        <div class="card-type">Data · R</div>
+        <div class="card-title">Google BellaBeat case study</div>
+        <div class="card-meta">
+          <span class="card-date">May 2023</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
-      <div class="card-flip" data-cat="it" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">IT · Network</div>
-            <div class="card-title">Network administrator — servers implementation</div>
-            <div class="card-meta">
-              <span class="card-date">Apr 2023</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">Designed and deployed a full network with AD, DHCP, DNS, IIS, printing, file sharing, and backup services for a simulated company environment.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">Windows Server</span><span class="card-back-tag">Active Directory</span><span class="card-back-tag">DNS/DHCP</span></div>
-              <a class="card-link" href="https://github.com/Anini-A/Academic-Projects/blob/main/README%20Network%20Admin.md" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="it" onclick="openModal('modal-9', this)">
+        <div class="card-type">IT · Network</div>
+        <div class="card-title">Network administrator — servers implementation</div>
+        <div class="card-meta">
+          <span class="card-date">Apr 2023</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
-      <div class="card-flip" data-cat="data" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-          <div class="card-front">
-            <div class="card-type">Data · Python</div>
-            <div class="card-title">Medical data visualizer</div>
-            <div class="card-meta">
-              <span class="card-date">May 2023</span>
-              <span class="card-hint"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> flip</span>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-desc">Visualized medical examination data using Matplotlib and Seaborn to reveal correlations between health metrics and cardiovascular risk.</div>
-            <div class="card-back-footer">
-              <div class="card-back-tags"><span class="card-back-tag">Python</span><span class="card-back-tag">Seaborn</span><span class="card-back-tag">Matplotlib</span></div>
-              <a class="card-link" href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Medical%20Data/Medical%20Data%20Visualizer.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-            </div>
-          </div>
+      <button type="button" class="proj-card" data-cat="data" onclick="openModal('modal-10', this)">
+        <div class="card-type">Data · Python</div>
+        <div class="card-title">Medical data visualizer</div>
+        <div class="card-meta">
+          <span class="card-date">May 2023</span>
+          <span class="card-cta">View details →</span>
         </div>
-      </div>
+      </button>
 
     </div>
   </section>
@@ -1243,6 +1292,101 @@
 
 </main>
 
+<!-- Project detail modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-panel" id="modalDialog" role="dialog" aria-modal="true" tabindex="-1">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- Project detail templates -->
+<template id="modal-1">
+  <div class="modal-type">Ops · Automation</div>
+  <h3 class="modal-title">JIRA ticket assignment automation</h3>
+  <div class="modal-date">Jan 2025</div>
+  <p class="modal-desc">Eliminated ~2.6 hrs/day of manual work. Analyzed 4,782 tickets over 61 days and designed a round-robin distribution system using JIRA automation rules, replacing a manual, ad-hoc assignment process the team had relied on for years.</p>
+  <div class="modal-tags"><span class="modal-tag">JIRA</span><span class="modal-tag">Google Sheets</span><span class="modal-tag">Scripts</span><span class="modal-tag">Looker</span></div>
+</template>
+
+<template id="modal-2">
+  <div class="modal-type">Ops · Compliance</div>
+  <h3 class="modal-title">MEP & RTP compliance remediation workflow</h3>
+  <div class="modal-date">Aug 2025</div>
+  <p class="modal-desc">Built a monthly SQL-driven process to identify and remediate regulatory compliance accounts. Established SLAs, verification steps, and repeatable documentation so the workflow could be handed off and audited reliably.</p>
+  <div class="modal-tags"><span class="modal-tag">SQL</span><span class="modal-tag">Compliance</span><span class="modal-tag">Process design</span><span class="modal-tag">Notion</span></div>
+</template>
+
+<template id="modal-3">
+  <div class="modal-type">Data · Dashboard</div>
+  <h3 class="modal-title">DragonPass HNW rewards dashboard</h3>
+  <div class="modal-date">Nov 2023</div>
+  <p class="modal-desc">SQL + Apache Preset dashboard enabling airport lounge code distribution to clients with $500K+ in deposits. Built alongside data engineers and validated against edge cases before full rollout to the high-net-worth client segment.</p>
+  <div class="modal-tags"><span class="modal-tag">SQL</span><span class="modal-tag">Apache Preset</span><span class="modal-tag">Data viz</span></div>
+</template>
+
+<template id="modal-4">
+  <div class="modal-type">Ops · Analysis</div>
+  <h3 class="modal-title">KYC concurrent update data investigation</h3>
+  <div class="modal-date">Sep 2025</div>
+  <p class="modal-desc">Investigated the frequency of simultaneous Name + SIN KYC updates over 6 months. Wrote targeted SQL queries, built a Looker chart to visualize the pattern, and delivered findings to stakeholders for engineering review and prioritization.</p>
+  <div class="modal-tags"><span class="modal-tag">SQL</span><span class="modal-tag">Looker</span><span class="modal-tag">Data analysis</span></div>
+</template>
+
+<template id="modal-5">
+  <div class="modal-type">Data · Python</div>
+  <h3 class="modal-title">Sea level predictor</h3>
+  <div class="modal-date">May 2023</div>
+  <p class="modal-desc">Analyzed global average sea level change since 1880 and built a linear regression model forecasting change through 2050, comparing recent-decades trend lines against the full historical record.</p>
+  <div class="modal-tags"><span class="modal-tag">Python</span><span class="modal-tag">Pandas</span><span class="modal-tag">Matplotlib</span></div>
+  <a class="modal-link" href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Sea%20Level/Sea%20Level%20Predictor.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+</template>
+
+<template id="modal-6">
+  <div class="modal-type">Data · Python</div>
+  <h3 class="modal-title">Demographic data analysis</h3>
+  <div class="modal-date">May 2023</div>
+  <p class="modal-desc">Uncovered socioeconomic insights using Pandas on the 1994 US Census database — analyzing income, education, and occupation patterns across demographic groups.</p>
+  <div class="modal-tags"><span class="modal-tag">Python</span><span class="modal-tag">Pandas</span><span class="modal-tag">NumPy</span></div>
+  <a class="modal-link" href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Demographic/Demographic%20data%20analyzer.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+</template>
+
+<template id="modal-7">
+  <div class="modal-type">Data · Tableau</div>
+  <h3 class="modal-title">Sales analysis dashboard</h3>
+  <div class="modal-date">Apr 2023</div>
+  <p class="modal-desc">End-to-end Tableau dashboard from raw sales data to published visual report, exploring revenue, regional breakdowns, and trends over time for a customer analysis use case.</p>
+  <div class="modal-tags"><span class="modal-tag">Tableau</span><span class="modal-tag">Data viz</span></div>
+  <a class="modal-link" href="https://public.tableau.com/views/CustomerAnalysis_16811002399650/SalesAnalysis?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer">View on Tableau <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+</template>
+
+<template id="modal-8">
+  <div class="modal-type">Data · R</div>
+  <h3 class="modal-title">Google BellaBeat case study</h3>
+  <div class="modal-date">May 2023</div>
+  <p class="modal-desc">Analyzed smart device usage data to identify growth opportunities for BellaBeat, a women's health tech company — covering the full data-to-insight lifecycle from cleaning to recommendations.</p>
+  <div class="modal-tags"><span class="modal-tag">R</span><span class="modal-tag">ggplot2</span><span class="modal-tag">Data cleaning</span></div>
+  <a class="modal-link" href="https://github.com/Anini-A/R-Project-Data-Analytics/blob/main/google-data-analytics-bellabeat-project.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+</template>
+
+<template id="modal-9">
+  <div class="modal-type">IT · Network</div>
+  <h3 class="modal-title">Network administrator — servers implementation</h3>
+  <div class="modal-date">Apr 2023</div>
+  <p class="modal-desc">Designed and deployed a full network with AD, DHCP, DNS, IIS, printing, file sharing, and backup services for a simulated company environment as part of an academic infrastructure project.</p>
+  <div class="modal-tags"><span class="modal-tag">Windows Server</span><span class="modal-tag">Active Directory</span><span class="modal-tag">DNS/DHCP</span></div>
+  <a class="modal-link" href="https://github.com/Anini-A/Academic-Projects/blob/main/README%20Network%20Admin.md" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+</template>
+
+<template id="modal-10">
+  <div class="modal-type">Data · Python</div>
+  <h3 class="modal-title">Medical data visualizer</h3>
+  <div class="modal-date">May 2023</div>
+  <p class="modal-desc">Visualized medical examination data using Matplotlib and Seaborn to reveal correlations between health metrics — cholesterol, BMI, activity — and cardiovascular risk.</p>
+  <div class="modal-tags"><span class="modal-tag">Python</span><span class="modal-tag">Seaborn</span><span class="modal-tag">Matplotlib</span></div>
+  <a class="modal-link" href="https://github.com/Anini-A/data-analysis-with-python/blob/main/Medical%20Data/Medical%20Data%20Visualizer.ipynb" target="_blank" rel="noopener noreferrer">View on GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+</template>
+
 <script>
   function showPanel(id) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -1257,8 +1401,8 @@
   function filterProj(cat, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    document.querySelectorAll('.card-flip').forEach(c => {
-      c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'block' : 'none';
+    document.querySelectorAll('.proj-card').forEach(c => {
+      c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'flex' : 'none';
     });
   }
 
@@ -1269,6 +1413,38 @@
   function closeMobileNav() {
     document.getElementById('mobileNav').classList.remove('open');
   }
+
+  let lastFocusedEl = null;
+
+  function openModal(templateId, triggerEl) {
+    const tpl = document.getElementById(templateId);
+    const modalBody = document.getElementById('modalBody');
+    modalBody.innerHTML = '';
+    modalBody.appendChild(tpl.content.cloneNode(true));
+
+    const titleEl = modalBody.querySelector('.modal-title');
+    const dialog = document.getElementById('modalDialog');
+    dialog.setAttribute('aria-label', titleEl ? titleEl.textContent : 'Project details');
+
+    lastFocusedEl = triggerEl || document.activeElement;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.classList.add('modal-open');
+    dialog.focus();
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.classList.remove('modal-open');
+    if (lastFocusedEl) lastFocusedEl.focus();
+  }
+
+  document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target.id === 'modalOverlay') closeModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
 </script>
 </body>
 </html>
